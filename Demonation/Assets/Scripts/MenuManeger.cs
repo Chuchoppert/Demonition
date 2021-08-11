@@ -18,7 +18,7 @@ public class MenuManeger : MonoBehaviour
 
     void Start()
     {
-        Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("#.#");
+        Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("1");
     }
     void Update()
     {
@@ -59,14 +59,14 @@ public class MenuManeger : MonoBehaviour
         //score += Time.deltaTime;
         Mathf.Round(score += Time.deltaTime);
 
-        Text_Score.text = "Ships: " + score.ToString("#.#");
-        Text_SC.text = score.ToString("#.#");
+        Text_Score.text = "Ships: " + score.ToString("1");
+        Text_SC.text = score.ToString("1");
         
         if (Hcore < score)
         {
             Hcore = score;
             PlayerPrefs.SetFloat("HighScore", Hcore);
-            Text_HC.text = Hcore.ToString("#.#");
+            Text_HC.text = Hcore.ToString("1");
         }
        
         
