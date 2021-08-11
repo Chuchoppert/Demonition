@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Controller : MonoBehaviour
 {
@@ -25,13 +26,13 @@ public class Controller : MonoBehaviour
 			vertical = Input.GetAxis("Vertical") * speed;
 
 			// constrain movement within the bounds of the camera
-			if (transform.position.y < -5.7f)
+			if (transform.position.y < -17f)
 			{
-				transform.position = new Vector3(transform.position.x, -5.7f, transform.position.z);
+				transform.position = new Vector3(transform.position.x, -17f, transform.position.z);
 			}
-			if (transform.position.y > 8.2)
+			if (transform.position.y > 17f)
 			{
-				transform.position = new Vector3(transform.position.x, 8.2f, transform.position.z);
+				transform.position = new Vector3(transform.position.x, 17f, transform.position.z);
 			}
 		}
 		else
@@ -45,23 +46,22 @@ public class Controller : MonoBehaviour
 			horizontal = Input.GetAxis("Horizontal") * speed;
 
 			// constrain movement within the bounds of the camera
-			if (transform.position.x < -12.5f)
+			if (transform.position.x < -25f)
 			{
-				transform.position = new Vector3(-12.5f, transform.position.y, transform.position.z);
+				transform.position = new Vector3(-25f, transform.position.y, transform.position.z);
 			}
-			if (transform.position.x > -2f)
+			if (transform.position.x > -1f)
 			{
-				transform.position = new Vector3(-2f, transform.position.y, transform.position.z);
+				transform.position = new Vector3(-1f, transform.position.y, transform.position.z);
 			}
 		}
 		else
 		{
 			horizontal = 0f;
 		}
-
+		
 		// set rigidbody's velocity to our input
 		rb.velocity = new Vector3(horizontal, vertical, 0);
 	}
-
 
 }
