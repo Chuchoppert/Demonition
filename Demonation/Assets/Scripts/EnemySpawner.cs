@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 	void Start()
 	{
 
-		StartCoroutine(SpawnEnemies());
+		StartCoroutine(SpawnEnemies()); //invoke("SpawnEnemies, Random.Range(1, 4)");
 	}
 
 	// Update is called once per frame
