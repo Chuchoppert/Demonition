@@ -5,8 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject Player;
+    float HealthEnemy = 1;
 
     public float MovingSpeed = 2f;
+
+    GameObject Controller;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +34,19 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Player.SetActive(false);
-        Debug.Log("Hit");
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //Player.SetActive(false);
+            Player.GetComponent<Controller>().HealthDemon -= 1.0f; 
+            Debug.Log("Hit");
+        }
+        else if (other.gameObject.CompareTag("Grab"))
+        {
+            Debug.Log("Ups");
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
