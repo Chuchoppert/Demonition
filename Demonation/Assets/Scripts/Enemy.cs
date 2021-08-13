@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject Player;
-    float HealthEnemy = 1;
+    //float HealthEnemy = 1;
 
     public float MovingSpeed = 2f;
 
@@ -37,7 +37,8 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Player.SetActive(false);
-            Player.GetComponent<Controller>().HealthDemon -= 1.0f; 
+            Player.GetComponent<Controller>().HealthDemon -= 1.0f;
+            Destroy(gameObject);
             Debug.Log("Hit");
         }
         else if (other.gameObject.CompareTag("Grab"))
