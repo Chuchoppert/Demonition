@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 572777370292448412}
   - component: {fileID: 572777370292448413}
   - component: {fileID: 572777370292448414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DeadAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4758,7 +4758,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef0fea8eac6eb4a47af67209bd94a90f, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 4d541886367acb14889a0fb78e1548ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
