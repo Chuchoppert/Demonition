@@ -16,6 +16,8 @@ public class MenuManeger : MonoBehaviour
     public GameObject Demon;
     public GameObject GameOverMenu;
 
+    public float timer = 1.6f;
+
     void Start()
     {
         Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F2");
@@ -32,7 +34,12 @@ public class MenuManeger : MonoBehaviour
         }
         else
         {
-            GameOverMenu.SetActive(true);
+            timer -= Time.deltaTime;
+            if ( timer <= 0)
+            {
+                GameOverMenu.SetActive(true);
+            }
+            
         }
     }
 
