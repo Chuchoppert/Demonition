@@ -9,7 +9,16 @@ public class Enemy : MonoBehaviour
 
     public float MovingSpeed = 2f;
 
-    GameObject Controller;
+    //GameObject Controller;
+    public GameObject Chunk_Prefab;
+
+    public GameObject bullet_Prefab;
+    public float DistanceToShoot = 80f;
+    public float shootInterval =1.5f;
+    float distanceFromTarget;
+    float shootTime;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +28,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 100, Color.red);
+        transform.LookAt(Player.transform);
+
+        distanceFromTarget = Vector3.Distance(transform.position, Player.transform.position);
+        shootControl();
+
 
         // if enemy goes past the left edge, destroy it
         if (transform.position.x < -40)
@@ -34,20 +49,51 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) //si toca al demon
         {
-            //Player.SetActive(false);
             Player.GetComponent<Controller>().HealthDemon -= 1.0f;
-            Destroy(gameObject);
+
             Debug.Log("Hit");
         }
-        else if (other.gameObject.CompareTag("Grab"))
+        else if (other.gameObject.CompareTag("Grab")) //para que no se destruya con el collider de la mano del demonio :v
         {
-            Debug.Log("Ups");
+            
+        }
+        else if (other.gameObject.CompareTag("ObjectDestroy")) //Si se destruye con un chunk
+        {
+            
+            GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
+
+            //para dos chunks
+            //GameObject Chunk1 = Instantiate<GameObject>(Chunk_Prefab); 
+            //Chunk1.transform.position = new Vector3 (transform.position.x + 3.5f, transform.position.y + 3.5f, transform.position.z); 
+
+            Chunk.transform.position = transform.position;
+            //para que no aparezcan los chunks mas alla de donde el personaje no puede ir 
+            if (Chunk.transform.position.x < -19f || Chunk.transform.position.x > 5.8f) 
+            {
+                Destroy(Chunk);
+            }
+            Destroy(gameObject);
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void shootControl()
+    {
+        shootTime -= Time.deltaTime;
+        if(shootTime < 0)
+        {
+            if(distanceFromTarget < DistanceToShoot)
+            {
+                shootTime = shootInterval;
+                GameObject bullet = Instantiate<GameObject>(bullet_Prefab);
+                bullet.transform.position = transform.position;
+                bullet.transform.LookAt(Player.transform.position);
+            }
         }
     }
 }

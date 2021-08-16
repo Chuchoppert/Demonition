@@ -7,17 +7,18 @@ public class FowardMovement : MonoBehaviour
     GameObject Enemies;
 
     public float ForceLaunch = 2.0f;
-
     GameObject Grab_Throw; //ref1
-    
-
     public bool ReadyToLaunch;
+
+    GameObject MenuManager; 
+
     // Start is called before the first frame update
     void Start()
     {      
         ReadyToLaunch = false;
         Enemies = GameObject.FindWithTag("Enemy");
         Grab_Throw = GameObject.FindWithTag("Grab"); //ref2
+        MenuManager = GameObject.FindWithTag("MenuManag"); 
     }
 
     // Update is called once per frame
@@ -36,14 +37,20 @@ public class FowardMovement : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(ForceLaunch, 0.0f, 0.0f);
         }
+
     }
 
     public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            MenuManager.GetComponent<MenuManeger>().score += 1;
+            Destroy(other.gameObject);          
+            Destroy(gameObject);           
+        }
+        else if (other.gameObject.CompareTag("Grab"))
+        {
+            
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8178397723540514327}
   m_Layer: 0
   m_Name: sdf 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovingSpeed: 10
+  Chunk_Prefab: {fileID: 5319868210091019920, guid: 36cfa21a98163ec468c7bf0893645731, type: 3}
+  bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
+  DistanceToShoot: 80
+  shootInterval: 1.5
 --- !u!65 &192906038868681678
 BoxCollider:
   m_ObjectHideFlags: 0

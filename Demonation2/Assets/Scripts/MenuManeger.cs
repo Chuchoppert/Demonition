@@ -18,6 +18,7 @@ public class MenuManeger : MonoBehaviour
 
     public float timer = 1.6f;
 
+
     void Start()
     {
         Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F2");
@@ -63,8 +64,8 @@ public class MenuManeger : MonoBehaviour
 
    public void ScoresGH()
     {
-        //score += Time.deltaTime;
-        Mathf.Round(score += Time.deltaTime);
+        //score += Time.deltaTime;        
+        //Mathf.Round(score += Time.deltaTime); LUEGO SE AGREGA LO DEL TIEMPO EN PANTALLA GAMEOVER
 
         Text_Score.text = "Ships: " + score.ToString("F2");
         Text_SC.text = score.ToString("F2");
