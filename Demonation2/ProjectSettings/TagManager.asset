@@ -7,6 +7,7 @@ TagManager:
   - ObjectDestroy
   - Enemy
   - Grab
+  - MenuManag
   layers:
   - Default
   - TransparentFX
