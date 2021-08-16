@@ -10,6 +10,8 @@ public class Controller : MonoBehaviour
 	private float vertical, horizontal;
 
 	public float HealthDemon = 2.0f;
+	public ParticleSystem explosion;
+	public AudioSource explosionSound;
 
 	// Use this for initialization
 	void Start()
@@ -68,8 +70,19 @@ public class Controller : MonoBehaviour
 
 		if (HealthDemon == 0)
         {
+			
+			Invoke("DeadAnim", 0f);
+			
 			gameObject.SetActive(false);
         }
+       
 	}
 
+	void DeadAnim()
+    {
+		explosionSound.Play();
+		explosion.transform.position = transform.position;
+		Instantiate<ParticleSystem>(explosion);
+		Debug.Log("Shiiiit");
+    }
 }
