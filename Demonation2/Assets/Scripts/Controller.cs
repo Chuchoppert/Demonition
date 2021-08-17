@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
 	void Update()
 	{
 		transform.position = new Vector3(transform.position.x, transform.position.y, 27.7f);
-		transform.rotation = Quaternion.Euler( 0,  90,  0);
+		transform.rotation = Quaternion.Euler( -90,  0,  90);
 
 		// vertical axis is either up or down or w and s on the keyboard, among others
 		if (Input.GetAxisRaw("Vertical") != 0)
