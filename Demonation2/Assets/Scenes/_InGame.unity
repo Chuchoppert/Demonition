@@ -1470,6 +1470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 671518727}
   - component: {fileID: 671518728}
+  - component: {fileID: 671518729}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1509,6 +1510,27 @@ MonoBehaviour:
   EnemiesForSeconds:
   - 2
   - 4
+--- !u!114 &671518729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671518726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d79783015be1f4ea42d47a9f6bbc3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 9079894710688003818, guid: 2407f190566d9574fbbeb01a5b7ec607, type: 3}
+  - {fileID: 97440925564899179, guid: af551d2c606f7e541b8de7652760fa18, type: 3}
+  - {fileID: 4248743128205104872, guid: 8708fbdb40e4e8c459202e80221bb765, type: 3}
+  - {fileID: 3357704765467874458, guid: e1b8d45ad718c3e4fbd3c88d286d7952, type: 3}
+  - {fileID: 5308853196485486241, guid: af92b0f7d0bfb8542973f139f5bd0cb5, type: 3}
+  EnemiesForSeconds:
+  - 5
+  - 10
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
