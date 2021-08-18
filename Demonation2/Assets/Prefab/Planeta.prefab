@@ -28,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6966102688491771355}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 6.6498172e-15, y: 0, z: -48.55621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6966102688491771355}
-  m_Mesh: {fileID: -265232463228109310, guid: e81f6875e00ed13429fdf39ce80a1c00, type: 3}
+  m_Mesh: {fileID: -265232463228109310, guid: a6595d762f3d21340bffd798841f8172, type: 3}
 --- !u!23 &8911617663363298318
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   Chunk_Prefab: {fileID: 3357704765467874458, guid: e1b8d45ad718c3e4fbd3c88d286d7952, type: 3}
   bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
   DistanceToShoot: 80
-  shootInterval: 1.5
+  shootInterval: 1
 --- !u!135 &6232331386402924619
 SphereCollider:
   m_ObjectHideFlags: 0
