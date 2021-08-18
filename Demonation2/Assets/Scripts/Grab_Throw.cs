@@ -28,6 +28,8 @@ public class Grab_Throw : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Q))
             {
+                IsReadyLauch = false;
+
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
                 PickedObject.gameObject.transform.SetParent(null);
