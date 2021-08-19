@@ -85,8 +85,7 @@ public class Controller : MonoBehaviour
 			gameObject.SetActive(false);
 		}
 
-		//AnimChunk_Time += Time.deltaTime;
-		//AnimChunk_Time = IntervalChunk_Time;
+		
 		if (FowardMovement.ReadyToLaunch == true) //Forward_Script.GetComponent<FowardMovement>().ReadyToLaunch == true
 
 		{
