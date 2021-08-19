@@ -4,38 +4,53 @@ using UnityEngine;
 
 public class FowardMovement : MonoBehaviour
 {
-    GameObject Enemies;
-
     public float ForceLaunch = 2.0f;
-    GameObject Grab_Throw; //ref1
-    public static bool ReadyToLaunch;
+    private GameObject PickedObject = null;
+    public bool IsReadyLauch;
+    public static bool ReadyToLaunch; //CHECAR ESTA VARIABLE PARA ANIM
 
-    GameObject MenuManager; 
+    GameObject MenuManager;
 
-    // Start is called before the first frame update
+    public float MovingSpeedChunk = 1f;
+
+
     void Start()
-    {      
-        ReadyToLaunch = false;
-        Enemies = GameObject.FindWithTag("Enemy");
-        Grab_Throw = GameObject.FindWithTag("Grab"); //ref2
-        MenuManager = GameObject.FindWithTag("MenuManag"); 
+    {
+        MenuManager = GameObject.FindWithTag("MenuManag");
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if (Grab_Throw.GetComponent<Grab_Throw>().IsReadyLauch == true) //ref final
+        ReadyToLaunch = IsReadyLauch;
+
+        if (IsReadyLauch == false)
         {
-            ReadyToLaunch = true;
-        }
-        else
-        {
-            ReadyToLaunch = false;
+            transform.Translate(-MovingSpeedChunk * 2 * Time.deltaTime, 0, 0, Space.World);
+            if (transform.position.x < -50f)
+            {
+                Destroy(gameObject);
+            }
         }
 
-        if (ReadyToLaunch == true)
+
+        if (IsReadyLauch == true)
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(ForceLaunch, 0.0f, 0.0f);
+        }
+
+        if (PickedObject != null)
+        {
+            if (Input.GetKey(KeyCode.Q))
+            {
+                IsReadyLauch = false;
+
+                PickedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+                PickedObject.gameObject.transform.SetParent(null);
+
+                PickedObject = null;
+            }
         }
 
     }
@@ -48,9 +63,18 @@ public class FowardMovement : MonoBehaviour
             Destroy(other.gameObject);          
             Destroy(gameObject);           
         }
-        else if (other.gameObject.CompareTag("Grab"))
+
+        if (other.gameObject.CompareTag("Grab"))
         {
-            
+            if (Input.GetKey(KeyCode.Space) && PickedObject == null)
+            {
+                IsReadyLauch = true;
+
+                gameObject.transform.position = other.transform.position;
+                gameObject.transform.SetParent(other.transform);
+
+                PickedObject = gameObject;
+            }
         }
     }
 }

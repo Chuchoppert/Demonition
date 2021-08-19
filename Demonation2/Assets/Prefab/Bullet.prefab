@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8828382161132243579}
   - component: {fileID: 6990637579162814061}
   - component: {fileID: 4905230440801371891}
-  - component: {fileID: 3551019637488018848}
   - component: {fileID: 2580571558200349979}
   - component: {fileID: -1055771130391324316}
+  - component: {fileID: 6281367096577617602}
   m_Layer: 3
   m_Name: Bullet
-  m_TagString: Grab
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3551019637488018848
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7016605488464515005}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2580571558200349979
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,8 +113,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977013d0590fe654ca27c1f05b203fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 919132149155446097, guid: fcc33ed45527d6648baa828c92fdd0d0, type: 3}
   speedBullet: 40
+--- !u!136 &6281367096577617602
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7016605488464515005}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 11.36}
 --- !u!1 &7919411002138941256
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,10 +139,9 @@ GameObject:
   - component: {fileID: 3277094507110219440}
   - component: {fileID: 3581278388079605073}
   - component: {fileID: 5397358556209264464}
-  - component: {fileID: 563405020526632567}
   m_Layer: 3
   m_Name: Capsule
-  m_TagString: Grab
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7919411002138941256}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 11.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8828382161132243579}
@@ -211,17 +209,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &563405020526632567
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7919411002138941256}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

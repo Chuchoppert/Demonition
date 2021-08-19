@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForceLaunch: 50
-  ReadyToLaunch: 0
+  MovingSpeedChunk: 5
 --- !u!1001 &796994501116309071
 PrefabInstance:
   m_ObjectHideFlags: 0
