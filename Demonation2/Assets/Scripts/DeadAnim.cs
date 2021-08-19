@@ -25,11 +25,14 @@ public class DeadAnim : MonoBehaviour
         }
     }
      void DeadAnimSound()
-    {        
+    {
+        if (isDead == true)
+        {
             SoundSource.clip = Sounds[Random.Range(0, Sounds.Length)];
             SoundSource.PlayOneShot(SoundSource.clip);
 
             explosion.transform.position = transform.position;
-            Instantiate<ParticleSystem>(explosion);                  
+            Instantiate<ParticleSystem>(explosion);
+        }
     }
 }

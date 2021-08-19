@@ -5,9 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject Player;
-
-    public float MovingSpeedEnemy = 2f;
-    
+  
     public GameObject Chunk_Prefab;
 
     public GameObject bullet_Prefab;
@@ -17,6 +15,7 @@ public class Enemy : MonoBehaviour
     float shootTime;
 
     public float[] DistanceToStop = { 7f, 11f };
+    public float MovingSpeedEnemy = 2f;
 
 
     // Start is called before the first frame update
@@ -35,10 +34,14 @@ public class Enemy : MonoBehaviour
             transform.LookAt(Player.transform);
         }
 
-        if (transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))//ARREGLAR: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
-        {
-            transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
-        }
+        //foreach (GameObject enemy in EnemySpawner.InstancesEnemies)
+        //{   
+            if (transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))//ARREGLAR: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
+            {
+                transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
+            }
+        //}
+        
     }
 
     public void OnTriggerEnter(Collider other)
