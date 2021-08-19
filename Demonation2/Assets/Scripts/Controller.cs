@@ -10,25 +10,19 @@ public class Controller : MonoBehaviour
 	private float vertical, horizontal;
 
 	public float HealthDemon = 2.0f;
-	public ParticleSystem explosion;
-	public AudioSource explosionSound;
 
 	public Animator CH_Demon_Anim;
 	//GrabChunk | isReady | Launched
-
-	//GameObject Forward_Script;
 	float AnimChunk_Time = 0;
 	public float IntervalChunk_Time = 0.49f;
 
-	// Use this for initialization
+	
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		CH_Demon_Anim = GetComponent<Animator>();
-		//Forward_Script = GameObject.FindWithTag("ObjectDestroy"); 
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 		transform.position = new Vector3(transform.position.x, transform.position.y, 27.7f);
@@ -77,15 +71,7 @@ public class Controller : MonoBehaviour
 		// set rigidbody's velocity to our input
 		rb.velocity = new Vector3(horizontal, vertical, 0);
 
-		if (HealthDemon == 0)
-		{
-
-			Invoke("DeadAnim", 0f);
-
-			gameObject.SetActive(false);
-		}
-
-		
+		isWasHurt();
 		if (FowardMovement.ReadyToLaunch == true) //Forward_Script.GetComponent<FowardMovement>().ReadyToLaunch == true
 
 		{
@@ -100,7 +86,7 @@ public class Controller : MonoBehaviour
 				CH_Demon_Anim.SetBool("isReady", true);
 			}
 			
-        }
+        } //ARREGLAR SCRIPTS PARA HACER ANIMACIONES
         else
         {
 			CH_Demon_Anim.SetBool("isReady", false);
@@ -111,11 +97,26 @@ public class Controller : MonoBehaviour
        
 	}
 
-	void DeadAnim()
+	void isWasHurt()
     {
-		explosionSound.Play();
-		explosion.transform.position = transform.position;
-		Instantiate<ParticleSystem>(explosion);
-		Debug.Log("Shiiiit");
+		if (HealthDemon <= 0)
+		{
+			gameObject.GetComponent<DeadAnim>().isDead = true;
+			gameObject.SetActive(false);
+		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+			HealthDemon -= 1;
+        }
+		else if (other.gameObject.CompareTag("Enemy"))
+        {
+			HealthDemon -= 1;
+		}
     }
+
+
 }

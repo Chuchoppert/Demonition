@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject Player;
     public float speedBullet = 2;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindWithTag("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > 40 || transform.position.x < -40)
+        if (transform.position.x > 40 || transform.position.x < -60)
         {
             Destroy(gameObject);
         }
@@ -33,13 +34,8 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
-            Player.GetComponent<Controller>().HealthDemon -= 1.0f;
+        {        
             Destroy(gameObject);
-        }
-        else if (other.gameObject.CompareTag("Grab") || other.gameObject.CompareTag("Enemy")) //para que no se destruya con el collider de la mano del demonio :v
-        {
-            
         }
         else if (other.gameObject.CompareTag("ObjectDestroy"))
         {

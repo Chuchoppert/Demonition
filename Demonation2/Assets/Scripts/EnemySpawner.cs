@@ -4,27 +4,40 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-	public GameObject[] prefabs;
+	public GameObject[] EnemyPrefabs;
 	public float[] EnemiesForSeconds = { 2f, 4f };
 
-	// Use this for initialization
+	private GameObject prefabInstance;
+	public int AmountEnemies = 7;
+	public int Cuantostenemos;
+
+
 	void Start()
 	{
-		Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
+			Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		//solo para hardcore mode
-		//Invoke("SpawnEnemies", Random.Range(2f, 4f));
+		Cuantostenemos = transform.childCount;
 	}
-
+	void PreSpawn()
+    {
+		if(transform.childCount < AmountEnemies)
+        {
+			Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1])); //ARRGLAR: EL QUE NO PUEDAN GENERARSE MAS TRAS MORIR Y EL QUE SE GENEREN 7 AL MISMO TIEMPO
+		}	
+	}
 	void SpawnEnemies()
 	{
-		// instantiate a random enemy past the right egde of the screen, facing left
-		Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(57.7f, Random.Range(-12f, 14.5f), 27.7f), Quaternion.Euler(-90f, -90f, 0f));
-
-		Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
+		for (int i = 0; i < AmountEnemies; i++)
+		{
+			// instantiate a random enemy past the right egde of the screen, facing left
+			prefabInstance = Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)], new Vector3(57.7f, Random.Range(-12f, 14.5f), 27.7f), Quaternion.Euler(-90f, 0f, 0f));
+			prefabInstance.transform.SetParent(transform);		
+		}
+		Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
 	}
+
 }
