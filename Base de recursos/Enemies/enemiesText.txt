@@ -6,7 +6,7 @@ Moons: This galaxy is not new to colonizing their moons,
 	they even armed them with giant (less powerful) lasers.
 	They cannot destroy your cover, but don't underestimate their numbers.
 
-When a Planet or Moon is demolished, you can use the resulting pieces as ammunition to keep your DEMONITION.
+When a Planet or Moon is DEMONISHED, you can use the resulting pieces as ammunition to keep your DEMONITION.
 
 Ships: The Intergalactic Council has become aware of your DEMONITION,
 	so they've sent their fleets of ships to stop you.
