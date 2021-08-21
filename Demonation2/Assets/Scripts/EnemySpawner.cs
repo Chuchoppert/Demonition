@@ -5,59 +5,58 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 	public GameObject[] EnemyPrefabs;
+	public GameObject[] Enemies;
 	public float[] EnemiesForSeconds = { 2f, 4f };
 
 	private GameObject prefabInstance;
+
+	//public static int AmountEnemies = 7;
 	public int AmountEnemies = 7;
 	public int Cuantostenemos;
-	public int Cuantostenemos1;
-	int iforeach;
-
-	public static List<GameObject> InstancesEnemies;
-	public float[] DistanceToStop = { 7f, 11f };
-	public float MovingSpeedEnemy = 2f;
 	GameObject[] EachEnemy;
+	bool IsFull;
 
-	void Start()
+	private void Awake()
+    {
+		Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
+	}
+    void Start()
 	{
-			Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
+	
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		Cuantostenemos = transform.childCount;
-		//Cuantostenemos1 = InstancesEnemies.Length;
+		EachEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+		Cuantostenemos = EachEnemy.Length;
+		Enemies = EnemyPrefabs;
+
+		if (Cuantostenemos < AmountEnemies)
+		{
+			IsFull = false;			
+		}
+		else if (Cuantostenemos >= AmountEnemies)
+		{
+			IsFull = true;
+		}
 	}
 	void PreSpawn()
     {
-		if(transform.childCount < AmountEnemies)
-        {
-			Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1])); //ARRGLAR: EL QUE NO PUEDAN GENERARSE MAS TRAS MORIR Y EL QUE SE GENEREN 7 AL MISMO TIEMPO
-		}	
+		Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1])); 
+
 	}
 	void SpawnEnemies()
 	{
-		for (int iforeach = 0; iforeach < AmountEnemies; iforeach++)
-		{
-			//InstancesEnemies = new List<GameObject>(AmountEnemies);
-
-			// instantiate a random enemy past the right egde of the screen, facing left
-			prefabInstance = Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)], new Vector3(57.7f, Random.Range(-12f, 14.5f), 27.7f), Quaternion.Euler(-90f, 0f, 0f));
-			prefabInstance.transform.SetParent(transform);
-			//InstancesEnemies.Add(prefabInstance);
+		// instantiate a random enemy past the right egde of the screen, facing left
+		if(IsFull == false)
+		{ 
+			prefabInstance = Instantiate(Enemies[Random.Range(0, Enemies.Length)], new Vector3(57.7f, Random.Range(-12f, 14.5f), 27.7f), Quaternion.Euler(-90f, 0f, 0f));
 		}
-		/*2 if (InstancesEnemies[iforeach].transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))
-			//					45							>			7 - 11
-		{
-			//transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
-			InstancesEnemies[iforeach].transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
-		}*/
-
-		/* 1 if(iforeach == AmountEnemies)
+		else if (true)
         {
-			iforeach = 0;
-        }*/
+			Debug.Log("Are you OK?");
+        }
 		Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
 	}
 

@@ -17,11 +17,15 @@ public class Enemy : MonoBehaviour
     public float[] DistanceToStop = { 7f, 11f };
     public float MovingSpeedEnemy = 2f;
 
+    /*GameObject[] EnemiesTotal;
+    GameObject[] EnemiesCheck;
+    int iFor;
+    int CountEnemies;*/
 
-    // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
+        //EnemiesCheck = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     void Update()
@@ -34,14 +38,25 @@ public class Enemy : MonoBehaviour
             transform.LookAt(Player.transform);
         }
 
-        //foreach (GameObject enemy in EnemySpawner.InstancesEnemies)
-        //{   
-            if (transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))//ARREGLAR: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
+        /*CountEnemies = EnemySpawner.AmountEnemies;
+
+            for (iFor = 0; iFor <= CountEnemies; iFor++)
             {
-                transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
+                if (EnemiesCheck[iFor].gameObject.transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))//TODO: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
+                {
+                    EnemiesCheck[iFor].gameObject.transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
+                }
             }
-        //}
-        
+        if(iFor >= CountEnemies)
+        {
+            iFor = 0;
+        }*/
+
+        if (gameObject.transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))//TODO: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
+        {
+            gameObject.transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
+        }
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -49,6 +64,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("ObjectDestroy"))
         {
             GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
+            //sacar instancia de enemySpawner (VIDEO EVENTS)
             Chunk.transform.position = transform.position;
         }
     }
