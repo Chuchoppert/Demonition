@@ -10,25 +10,21 @@ public class Controller : MonoBehaviour
 	private float vertical, horizontal;
 
 	public float HealthDemon = 2.0f;
-	public ParticleSystem explosion;
-	public AudioSource explosionSound;
 
 	public Animator CH_Demon_Anim;
 	//GrabChunk | isReady | Launched
-
-	//GameObject Forward_Script;
 	float AnimChunk_Time = 0;
 	public float IntervalChunk_Time = 0.49f;
 
-	// Use this for initialization
+	float TimerDead;
+
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		CH_Demon_Anim = GetComponent<Animator>();
-		//Forward_Script = GameObject.FindWithTag("ObjectDestroy"); 
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 		transform.position = new Vector3(transform.position.x, transform.position.y, 27.7f);
@@ -77,16 +73,7 @@ public class Controller : MonoBehaviour
 		// set rigidbody's velocity to our input
 		rb.velocity = new Vector3(horizontal, vertical, 0);
 
-		if (HealthDemon == 0)
-		{
-
-			Invoke("DeadAnim", 0f);
-
-			gameObject.SetActive(false);
-		}
-
-		//AnimChunk_Time += Time.deltaTime;
-		//AnimChunk_Time = IntervalChunk_Time;
+		isWasHurt();
 		if (FowardMovement.ReadyToLaunch == true) //Forward_Script.GetComponent<FowardMovement>().ReadyToLaunch == true
 
 		{
@@ -99,24 +86,51 @@ public class Controller : MonoBehaviour
             {				
 				CH_Demon_Anim.SetBool("GrabChunk", false);
 				CH_Demon_Anim.SetBool("isReady", true);
-			}
-			
-        }
+			}			
+        } //ARREGLAR SCRIPTS PARA HACER ANIMACIONES
         else
-        {
+		{   //if key Q is down activate bool Launched
 			CH_Demon_Anim.SetBool("isReady", false);
 			CH_Demon_Anim.SetTrigger("Launched");	
 			CH_Demon_Anim.ResetTrigger("Launched");
 			AnimChunk_Time = 0;
-		}
-       
+		}    
 	}
 
-	void DeadAnim()
+	void isWasHurt()
     {
-		explosionSound.Play();
-		explosion.transform.position = transform.position;
-		Instantiate<ParticleSystem>(explosion);
-		Debug.Log("Shiiiit");
+		if(HealthDemon == 1)
+        {
+			gameObject.layer = 3;
+        }
+        else if(HealthDemon > 1)
+        {
+			gameObject.layer = 0;
+		}
+
+		if (HealthDemon <= 0)
+		{
+			gameObject.GetComponent<DeadAnim>().isDead = true;
+
+			TimerDead += Time.deltaTime; 
+			if(TimerDead > 0.01f)
+            {
+				gameObject.SetActive(false);
+			}
+		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+			HealthDemon -= 1;
+        }
+		else if (other.gameObject.CompareTag("Enemy")) //Nave
+        {
+			HealthDemon -= 1;
+		}
     }
+
+
 }

@@ -4,27 +4,60 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-	public GameObject[] prefabs;
+	public GameObject[] EnemyPrefabs;
+	public GameObject[] Enemies;
 	public float[] EnemiesForSeconds = { 2f, 4f };
 
-	// Use this for initialization
-	void Start()
+	private GameObject prefabInstance;
+
+	//public static int AmountEnemies = 7;
+	public int AmountEnemies = 7;
+	public int Cuantostenemos;
+	GameObject[] EachEnemy;
+	bool IsFull;
+
+	private void Awake()
+    {
+		Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
+	}
+    void Start()
 	{
-		Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
+	
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		//solo para hardcore mode
-		//Invoke("SpawnEnemies", Random.Range(2f, 4f));
-	}
+		EachEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+		Cuantostenemos = EachEnemy.Length;
+		Enemies = EnemyPrefabs;
 
+		if (Cuantostenemos < AmountEnemies)
+		{
+			IsFull = false;			
+		}
+		else if (Cuantostenemos >= AmountEnemies)
+		{
+			IsFull = true;
+		}
+	}
+	void PreSpawn()
+    {
+		Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1])); 
+
+	}
 	void SpawnEnemies()
 	{
 		// instantiate a random enemy past the right egde of the screen, facing left
-		Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(57.7f, Random.Range(-12f, 14.5f), 27.7f), Quaternion.Euler(-90f, -90f, 0f));
-
-		Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
+		if(IsFull == false)
+		{ 
+			prefabInstance = Instantiate(Enemies[Random.Range(0, Enemies.Length)], new Vector3(57.7f, Random.Range(-12f, 14.5f), 27.7f), Quaternion.Euler(-90f, 0f, 0f));
+		}
+		else if (true)
+        {
+			Debug.Log("Are you OK?");
+        }
+		Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
 	}
+
 }
