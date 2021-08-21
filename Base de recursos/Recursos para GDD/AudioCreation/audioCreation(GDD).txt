@@ -1,0 +1,6 @@
+To craft the music, we wanted a low-bit retro sound, but with a modern feel to it.
+So we used FL Studio, which has some useful stock percussions that we slightly modified for the beat,
+and we used a modern digital synthesizer (VST) called Poizone for a beefy bassline.
+On top of that, we used Medusa 2, a VST that emulates a 4-bit synthesizer
+and can make fun arpeggios with the notes you give to it.
+This is what it looks like all put together:

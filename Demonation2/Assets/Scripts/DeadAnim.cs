@@ -19,17 +19,20 @@ public class DeadAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead == true) //SI SE ACTIVA EL TRUE MANUALMENTE FUNCIONA, PERO NO CUANDO LO HACE LA MUERTE
+        if (isDead == true) 
         {
             Invoke("DeadAnimSound", 0f);
         }
     }
      void DeadAnimSound()
-    {        
+    {
+        if (isDead == true)
+        {
             SoundSource.clip = Sounds[Random.Range(0, Sounds.Length)];
             SoundSource.PlayOneShot(SoundSource.clip);
 
             explosion.transform.position = transform.position;
-            Instantiate<ParticleSystem>(explosion);                  
+            Instantiate<ParticleSystem>(explosion);
+        }
     }
 }

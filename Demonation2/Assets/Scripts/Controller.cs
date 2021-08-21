@@ -16,7 +16,9 @@ public class Controller : MonoBehaviour
 	float AnimChunk_Time = 0;
 	public float IntervalChunk_Time = 0.49f;
 
-	
+	float TimerDead;
+
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -84,25 +86,37 @@ public class Controller : MonoBehaviour
             {				
 				CH_Demon_Anim.SetBool("GrabChunk", false);
 				CH_Demon_Anim.SetBool("isReady", true);
-			}
-			
+			}			
         } //ARREGLAR SCRIPTS PARA HACER ANIMACIONES
         else
-        {
+		{   //if key Q is down activate bool Launched
 			CH_Demon_Anim.SetBool("isReady", false);
 			CH_Demon_Anim.SetTrigger("Launched");	
 			CH_Demon_Anim.ResetTrigger("Launched");
 			AnimChunk_Time = 0;
-		}
-       
+		}    
 	}
 
 	void isWasHurt()
     {
+		if(HealthDemon == 1)
+        {
+			gameObject.layer = 3;
+        }
+        else if(HealthDemon > 1)
+        {
+			gameObject.layer = 0;
+		}
+
 		if (HealthDemon <= 0)
 		{
 			gameObject.GetComponent<DeadAnim>().isDead = true;
-			gameObject.SetActive(false);
+
+			TimerDead += Time.deltaTime; 
+			if(TimerDead > 0.01f)
+            {
+				gameObject.SetActive(false);
+			}
 		}
 	}
 
@@ -112,7 +126,7 @@ public class Controller : MonoBehaviour
         {
 			HealthDemon -= 1;
         }
-		else if (other.gameObject.CompareTag("Enemy"))
+		else if (other.gameObject.CompareTag("Enemy")) //Nave
         {
 			HealthDemon -= 1;
 		}

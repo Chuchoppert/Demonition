@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304b06e8a02e9ff489515595565204f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovingSpeed: 10
+  MovingSpeedEnemy: 10
   Chunk_Prefab: {fileID: 3357704765467874458, guid: e1b8d45ad718c3e4fbd3c88d286d7952, type: 3}
   bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
   DistanceToShoot: 80
