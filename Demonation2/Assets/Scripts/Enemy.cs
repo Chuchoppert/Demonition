@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject Player;
+   // public Transform Player;
   
     public GameObject Chunk_Prefab;
 
@@ -17,9 +18,9 @@ public class Enemy : MonoBehaviour
 
     public float DistanceToStop = 12f;
     public float MovingSpeedEnemy = 2f;
-    public AudioClip effect1;
+    //public AudioClip effect1;
 
-
+    GameObject soundSource;
 
     /*GameObject[] EnemiesTotal;
     GameObject[] EnemiesCheck;
@@ -28,20 +29,25 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-       
+        soundSource = GameObject.FindGameObjectWithTag("SdEnemies");
+        gameObject.GetComponent<DeadAnim>().SoundSource = soundSource.GetComponent<AudioSource>();
         Player = GameObject.FindWithTag("Player");
+
         //EnemiesCheck = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     void Update()
     {
         Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 100, Color.red);
-        distanceFromTarget = Vector3.Distance(transform.position, Player.transform.position);
-        shootControl();
-        if (Player.gameObject.activeSelf == true)
+
+        distanceFromTarget = Vector3.Distance(this.transform.position, Player.transform.position);
+        transform.LookAt(Player.transform);     
+        
+        if (Player.gameObject.activeSelf == false)
         {
-            transform.LookAt(Player.transform);
+            Destroy(gameObject, 0.5f);
         }
+        shootControl();
 
         //Debug.Log(DistanceToStop);
 
@@ -65,7 +71,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            DistanceToStop = Random.Range(3f, 22f);
+            DistanceToStop = Random.Range(12f, 22f);
         }
 
     }
@@ -75,11 +81,23 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("ObjectDestroy"))
         {
 
+
+            //if(other.gameObject.layer == 6)
+            //{
+            gameObject.GetComponent<DeadAnim>().isDead = true;
+            Destroy(gameObject, 0.01f);
             GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
-            //sacar instancia de enemySpawner (VIDEO EVENTS)
             Chunk.transform.position = transform.position;
-            AudioSource.PlayClipAtPoint(effect1, new Vector3(0, 0, 0));
-            Debug.Log("Sound");
+            //Debug.Log("Sound");
+
+
+            // gameObject.GetComponent<DeadAnim>().isDead = false;
+            // }
+            // else if(other.gameObject.layer == 0)
+            // {
+
+            //  }            
+            //AudioSource.PlayClipAtPoint(effect1, new Vector3(0, 0, 0));           
         }
     }
 

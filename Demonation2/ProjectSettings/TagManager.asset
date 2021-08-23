@@ -9,6 +9,7 @@ TagManager:
   - Grab
   - MenuManag
   - Bullet
+  - SdEnemies
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - VIDEO
   - Water
   - UI
-  - 
+  - LaunchedbyPlayer
   - 
   - 
   - 

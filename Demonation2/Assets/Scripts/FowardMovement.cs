@@ -7,12 +7,11 @@ public class FowardMovement : MonoBehaviour
     public float ForceLaunch = 2.0f;
     private GameObject PickedObject = null;
     public bool IsReadyLauch;
-    public static bool ReadyToLaunch; //CHECAR ESTA VARIABLE PARA ANIM
+    public static bool ReadyToLaunch; 
 
     GameObject MenuManager;
 
     public float MovingSpeedChunk = 1f;
-
 
     void Start()
     {
@@ -50,6 +49,7 @@ public class FowardMovement : MonoBehaviour
                 PickedObject.gameObject.transform.SetParent(null);
 
                 PickedObject = null;
+                this.gameObject.layer = 6;
             }
         }
 
@@ -59,9 +59,9 @@ public class FowardMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            MenuManager.GetComponent<MenuManeger>().score += 1;
-            Destroy(other.gameObject);          
-            Destroy(gameObject);           
+                MenuManager.GetComponent<MenuManeger>().score += 1;
+               
+                Destroy(gameObject);        
         }
 
         if (other.gameObject.CompareTag("Grab"))
@@ -74,6 +74,7 @@ public class FowardMovement : MonoBehaviour
                 gameObject.transform.SetParent(other.transform);
 
                 PickedObject = gameObject;
+                //this.gameObject.layer = 0;
             }
         }
     }

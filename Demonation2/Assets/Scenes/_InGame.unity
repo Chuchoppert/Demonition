@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671518726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82d79783015be1f4ea42d47a9f6bbc3a, type: 3}
   m_Name: 
@@ -2050,7 +2050,7 @@ GameObject:
   - component: {fileID: 809020783}
   m_Layer: 0
   m_Name: EnemiesSounds
-  m_TagString: Untagged
+  m_TagString: SdEnemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4265,6 +4265,7 @@ Transform:
   - {fileID: 157002853}
   - {fileID: 1530318875}
   - {fileID: 809020782}
+  - {fileID: 1976970118}
   m_Father: {fileID: 275664509}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4756,12 +4757,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976970116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1005.1826, y: -843.32947, z: -19.909668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1685299404}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2087161348
 PrefabInstance:
@@ -4902,7 +4903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  HealthDemon: 500
+  HealthDemon: 2
   CH_Demon_Anim: {fileID: 2112267983}
   IntervalChunk_Time: 0.49
 --- !u!65 &2112267985
