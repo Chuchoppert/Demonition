@@ -97,14 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304b06e8a02e9ff489515595565204f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovingSpeedEnemy: 10
   Chunk_Prefab: {fileID: 9079894710688003818, guid: 2407f190566d9574fbbeb01a5b7ec607, type: 3}
   bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
   DistanceToShoot: 80
   shootInterval: 1
-  DistanceToStop:
-  - 7
-  - 20
+  DistanceToStop: 12
+  MovingSpeedEnemy: 10
+  effect1: {fileID: 8300000, guid: 0fd25545165198c4b809b551f3208e5a, type: 3}
 --- !u!135 &5719106727670322791
 SphereCollider:
   m_ObjectHideFlags: 0
