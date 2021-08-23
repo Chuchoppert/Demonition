@@ -5,12 +5,11 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speedBullet = 2;
-
-
+    GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
-
+        Player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -24,9 +23,12 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-         //transform.LookAt(Player.transform.position); modo ultra hardcore
-    }
+        if(Player != null && HardcoreMODE.isHardcore == true)
+        {
+            transform.LookAt(Player.transform.position);
+        }
 
+    }
     private void FixedUpdate()
     {
         transform.position += transform.forward * speedBullet * Time.fixedDeltaTime;

@@ -13,10 +13,11 @@ public class Controller : MonoBehaviour
 
 	public Animator CH_Demon_Anim;
 	//GrabChunk | isReady | Launched
-	public float IntervalChunk_Time = 0.49f;
 
 	float TimerDead;
-
+	public AudioSource SoundSource;
+	public AudioClip[] SoundsDemon;
+	//Throw | Grab
 
 	void Start()
 	{
@@ -76,7 +77,10 @@ public class Controller : MonoBehaviour
 		if (FowardMovement.ReadyToLaunch == true) 
 		{
 			if (Input.GetKeyUp(KeyCode.Space))//Agarra Chunk
-			{				
+			{
+				SoundSource.clip = SoundsDemon[1];
+				SoundSource.PlayOneShot(SoundSource.clip);
+
 				CH_Demon_Anim.SetBool("GrabChunk", true);
 			}
             else //Mantiene Chunk
@@ -86,7 +90,10 @@ public class Controller : MonoBehaviour
 			}			
         } 
         if (Input.GetKey(KeyCode.Q)) //Lanza Chunk
-		{  
+		{
+			SoundSource.clip = SoundsDemon[0];
+			SoundSource.PlayOneShot(SoundSource.clip);
+
 			CH_Demon_Anim.SetBool("isReady", false);
 			CH_Demon_Anim.SetTrigger("Launched");	
 		}
@@ -118,6 +125,7 @@ public class Controller : MonoBehaviour
 			}
 		}
 	}
+
 
 	private void OnTriggerEnter(Collider other)
     {

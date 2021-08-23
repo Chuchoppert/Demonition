@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FowardMovement : MonoBehaviour
 {
+    GameObject Player;
+
     public float ForceLaunch = 2.0f;
     private GameObject PickedObject = null;
     public bool IsReadyLauch;
@@ -16,11 +18,16 @@ public class FowardMovement : MonoBehaviour
     void Start()
     {
         MenuManager = GameObject.FindWithTag("MenuManag");
+        Invoke("AddCollider", 1f);
+        Player = GameObject.FindWithTag("Player");
     }
-
 
     void Update()
     {
+        if (Player == null)
+        {
+            Destroy(gameObject, 0.5f);
+        }
         ReadyToLaunch = IsReadyLauch;
 
         if (IsReadyLauch == false)
@@ -31,7 +38,6 @@ public class FowardMovement : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
 
         if (IsReadyLauch == true)
         {
@@ -49,19 +55,24 @@ public class FowardMovement : MonoBehaviour
                 PickedObject.gameObject.transform.SetParent(null);
 
                 PickedObject = null;
-                this.gameObject.layer = 6;
             }
         }
+    }
 
+    void AddCollider()
+    {
+        this.gameObject.AddComponent<BoxCollider>();
+        this.gameObject.GetComponent<BoxCollider>().size = new Vector3(3.6f, 4, 4);
     }
 
     public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-                MenuManager.GetComponent<MenuManeger>().score += 1;
-               
-                Destroy(gameObject);        
+            MenuManager.GetComponent<MenuManeger>().score += 1;
+            
+            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         if (other.gameObject.CompareTag("Grab"))
@@ -73,8 +84,8 @@ public class FowardMovement : MonoBehaviour
                 gameObject.transform.position = other.transform.position;
                 gameObject.transform.SetParent(other.transform);
 
+                this.gameObject.layer = 6;
                 PickedObject = gameObject;
-                //this.gameObject.layer = 0;
             }
         }
     }
