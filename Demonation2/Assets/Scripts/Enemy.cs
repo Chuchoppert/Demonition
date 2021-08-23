@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
     GameObject Player;
@@ -14,8 +15,11 @@ public class Enemy : MonoBehaviour
     float distanceFromTarget;
     float shootTime;
 
-    public float[] DistanceToStop = { 7f, 11f };
+    public float DistanceToStop = 12f;
     public float MovingSpeedEnemy = 2f;
+    public AudioClip effect1;
+
+
 
     /*GameObject[] EnemiesTotal;
     GameObject[] EnemiesCheck;
@@ -24,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+       
         Player = GameObject.FindWithTag("Player");
         //EnemiesCheck = GameObject.FindGameObjectsWithTag("Enemy");
     }
@@ -37,6 +42,8 @@ public class Enemy : MonoBehaviour
         {
             transform.LookAt(Player.transform);
         }
+
+        //Debug.Log(DistanceToStop);
 
         /*CountEnemies = EnemySpawner.AmountEnemies;
 
@@ -52,9 +59,13 @@ public class Enemy : MonoBehaviour
             iFor = 0;
         }*/
 
-        if (gameObject.transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))//TODO: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
+        if (gameObject.transform.position.x > DistanceToStop)//TODO: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
         {
             gameObject.transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
+        }
+        else
+        {
+            DistanceToStop = Random.Range(3f, 22f);
         }
 
     }
@@ -63,9 +74,12 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ObjectDestroy"))
         {
+
             GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
             //sacar instancia de enemySpawner (VIDEO EVENTS)
             Chunk.transform.position = transform.position;
+            AudioSource.PlayClipAtPoint(effect1, new Vector3(0, 0, 0));
+            Debug.Log("Sound");
         }
     }
 
