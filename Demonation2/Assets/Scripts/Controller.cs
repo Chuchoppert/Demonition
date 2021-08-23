@@ -86,6 +86,7 @@ public class Controller : MonoBehaviour
             {				
 				CH_Demon_Anim.SetBool("GrabChunk", false);
 				CH_Demon_Anim.SetBool("isReady", true);
+				
 			}			
         } //ARREGLAR SCRIPTS PARA HACER ANIMACIONES
         else
@@ -94,6 +95,7 @@ public class Controller : MonoBehaviour
 			CH_Demon_Anim.SetTrigger("Launched");	
 			CH_Demon_Anim.ResetTrigger("Launched");
 			AnimChunk_Time = 0;
+			
 		}    
 	}
 
