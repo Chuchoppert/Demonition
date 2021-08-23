@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5255245210187617154}
   - component: {fileID: 5719106727670322791}
   - component: {fileID: 4327647120572478048}
+  - component: {fileID: -1748940163140590263}
   m_Layer: 0
   m_Name: Luna
   m_TagString: Enemy
@@ -101,9 +102,8 @@ MonoBehaviour:
   bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
   DistanceToShoot: 80
   shootInterval: 1
-  DistanceToStop: 12
+  DistanceToStop: 20
   MovingSpeedEnemy: 10
-  effect1: {fileID: 8300000, guid: 0fd25545165198c4b809b551f3208e5a, type: 3}
 --- !u!135 &5719106727670322791
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -133,3 +133,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1748940163140590263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140134591750900941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492cc98d643d479428c1ec02a5997434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 572777370292448413, guid: 86bdfb7f7ab79774c8fdac3a585c4d5d, type: 3}
+  SoundSource: {fileID: 0}
+  Sounds:
+  - {fileID: 8300000, guid: 0fd25545165198c4b809b551f3208e5a, type: 3}
+  - {fileID: 8300000, guid: 8f5ecb0c047d2c04a93ed37efbf9a2ee, type: 3}
+  isDead: 0

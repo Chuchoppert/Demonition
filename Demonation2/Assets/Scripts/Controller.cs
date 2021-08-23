@@ -13,7 +13,6 @@ public class Controller : MonoBehaviour
 
 	public Animator CH_Demon_Anim;
 	//GrabChunk | isReady | Launched
-	float AnimChunk_Time = 0;
 	public float IntervalChunk_Time = 0.49f;
 
 	float TimerDead;
@@ -74,27 +73,27 @@ public class Controller : MonoBehaviour
 		rb.velocity = new Vector3(horizontal, vertical, 0);
 
 		isWasHurt();
-		if (FowardMovement.ReadyToLaunch == true) //Forward_Script.GetComponent<FowardMovement>().ReadyToLaunch == true
-
+		if (FowardMovement.ReadyToLaunch == true) 
 		{
-			AnimChunk_Time += Time.deltaTime;
-			if (AnimChunk_Time < 0.49f)
-            {				
+			if (Input.GetKeyUp(KeyCode.Space))//Agarra Chunk
+			{				
 				CH_Demon_Anim.SetBool("GrabChunk", true);
 			}
-            else
+            else //Mantiene Chunk
             {				
 				CH_Demon_Anim.SetBool("GrabChunk", false);
 				CH_Demon_Anim.SetBool("isReady", true);
 			}			
-        } //ARREGLAR SCRIPTS PARA HACER ANIMACIONES
-        else
-		{   //if key Q is down activate bool Launched
+        } 
+        if (Input.GetKey(KeyCode.Q)) //Lanza Chunk
+		{  
 			CH_Demon_Anim.SetBool("isReady", false);
 			CH_Demon_Anim.SetTrigger("Launched");	
+		}
+		else if (Input.GetKeyUp(KeyCode.Q))
+        {
 			CH_Demon_Anim.ResetTrigger("Launched");
-			AnimChunk_Time = 0;
-		}    
+		}
 	}
 
 	void isWasHurt()

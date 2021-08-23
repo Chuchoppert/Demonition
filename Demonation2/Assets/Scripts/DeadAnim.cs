@@ -33,6 +33,7 @@ public class DeadAnim : MonoBehaviour
 
             explosion.transform.position = transform.position;
             Instantiate<ParticleSystem>(explosion);
+            isDead = false;
         }
     }
 }
