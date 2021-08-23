@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
             //sacar instancia de enemySpawner (VIDEO EVENTS)
             Chunk.transform.position = transform.position;
             AudioSource.PlayClipAtPoint(effect1, new Vector3(0, 0, 0));
-            Debug.Log("Sound");
+            
         }
     }
 
