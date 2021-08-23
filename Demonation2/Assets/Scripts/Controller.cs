@@ -83,6 +83,7 @@ public class Controller : MonoBehaviour
             {				
 				CH_Demon_Anim.SetBool("GrabChunk", false);
 				CH_Demon_Anim.SetBool("isReady", true);
+				
 			}			
         } 
         if (Input.GetKey(KeyCode.Q)) //Lanza Chunk

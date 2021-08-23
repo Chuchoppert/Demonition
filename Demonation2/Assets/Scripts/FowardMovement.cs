@@ -13,6 +13,9 @@ public class FowardMovement : MonoBehaviour
 
     public float MovingSpeedChunk = 1f;
 
+    public AudioSource S_grab;
+    public AudioSource S_throw;
+
     void Start()
     {
         MenuManager = GameObject.FindWithTag("MenuManag");
@@ -43,6 +46,7 @@ public class FowardMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Q))
             {
                 IsReadyLauch = false;
+                S_throw.Play();
 
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
@@ -68,6 +72,7 @@ public class FowardMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space) && PickedObject == null)
             {
+                S_grab.Play();
                 IsReadyLauch = true;
 
                 gameObject.transform.position = other.transform.position;
