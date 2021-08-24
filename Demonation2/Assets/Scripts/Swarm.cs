@@ -24,7 +24,7 @@ public class Swarm : MonoBehaviour
 
         if (transform.position.x >= -24.4f)
         {
-            Debug.Log("Toggle reached");
+            //Debug.Log("Toggle reached");
             reached = true;
         }
 
@@ -43,7 +43,7 @@ public class Swarm : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(standbyTime);
+        //Debug.Log(standbyTime);
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject Player;
-  
+ 
     public GameObject Chunk_Prefab;
 
     public GameObject bullet_Prefab;
@@ -15,71 +15,59 @@ public class Enemy : MonoBehaviour
     float distanceFromTarget;
     float shootTime;
 
-    public float DistanceToStop = 12f;
+    public float enemyLeftBorder = 8;
+    public float enemyRightBorder = 28;
+    private float DistanceToStop;
     public float MovingSpeedEnemy = 2f;
-    public AudioClip effect1;
 
-
-
-    /*GameObject[] EnemiesTotal;
-    GameObject[] EnemiesCheck;
-    int iFor;
-    int CountEnemies;*/
+    GameObject soundSource;
+    bool isChunkCollision;
 
     void Start()
     {
-       
+        soundSource = GameObject.FindGameObjectWithTag("SdEnemies");
+        gameObject.GetComponent<DeadAnim>().SoundSource = soundSource.GetComponent<AudioSource>();
         Player = GameObject.FindWithTag("Player");
-        //EnemiesCheck = GameObject.FindGameObjectsWithTag("Enemy");
+
+        DistanceToStop = Random.Range(enemyLeftBorder, enemyRightBorder);
+        isChunkCollision = false;
     }
 
     void Update()
     {
         Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 100, Color.red);
-        distanceFromTarget = Vector3.Distance(transform.position, Player.transform.position);
-        shootControl();
-        if (Player.gameObject.activeSelf == true)
+        if (Player != null)
         {
+            distanceFromTarget = Vector3.Distance(this.transform.position, Player.transform.position);
+
             transform.LookAt(Player.transform);
-        }
-
-        //Debug.Log(DistanceToStop);
-
-        /*CountEnemies = EnemySpawner.AmountEnemies;
-
-            for (iFor = 0; iFor <= CountEnemies; iFor++)
-            {
-                if (EnemiesCheck[iFor].gameObject.transform.position.x > Random.Range(DistanceToStop[0], DistanceToStop[1]))//TODO: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
-                {
-                    EnemiesCheck[iFor].gameObject.transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
-                }
-            }
-        if(iFor >= CountEnemies)
+        }       
+        if (Player == null)
         {
-            iFor = 0;
-        }*/
-
-        if (gameObject.transform.position.x > DistanceToStop)//TODO: QUE SE PAREN ALEATORIAMENTE Y NO TODOS EN EL MISMO PUNTO
-        {
-            gameObject.transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);
+            Destroy(gameObject, 0.5f);
         }
-        else
-        {
-            DistanceToStop = Random.Range(3f, 22f);
-        }
+        shootControl();
 
+        if (gameObject.transform.position.x > DistanceToStop)
+        {
+            gameObject.transform.Translate(-MovingSpeedEnemy * 2 * Time.deltaTime, 0, 0, Space.World);         
+        }
     }
 
+    public void OnDestroy()
+    {
+        if(isChunkCollision == true)
+        {
+            GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
+            Chunk.transform.position = transform.position;
+        }      
+    }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ObjectDestroy"))
+        if (other.gameObject.CompareTag("ObjectDestroy") && (other.gameObject.layer == 6 || other.gameObject.layer == 7))
         {
-
-            GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
-            //sacar instancia de enemySpawner (VIDEO EVENTS)
-            Chunk.transform.position = transform.position;
-            AudioSource.PlayClipAtPoint(effect1, new Vector3(0, 0, 0));
-            
+            gameObject.GetComponent<DeadAnim>().isDead = true;
+            isChunkCollision = true;  
         }
     }
 
@@ -93,7 +81,10 @@ public class Enemy : MonoBehaviour
                 shootTime = shootInterval;
                 GameObject bullet = Instantiate<GameObject>(bullet_Prefab);
                 bullet.transform.position = new Vector3(transform.position.x + 7.5f, transform.position.y, transform.position.z);
-                bullet.transform.LookAt(Player.transform.position);
+                if (Player != null)
+                {
+                    bullet.transform.LookAt(Player.transform.position);
+                } 
             }
         }
     }

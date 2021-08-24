@@ -8,42 +8,46 @@ using TMPro;
 public class MenuManeger : MonoBehaviour
 {
     public float score;
-    public float Hcore;
-    public TextMeshProUGUI Text_Score;
-    public TextMeshProUGUI Text_SC;
-    public TextMeshProUGUI Text_HC;
+     float Hcore;
+    public TextMeshProUGUI Text_Score; //pantallaGame
+    public TextMeshProUGUI Text_SC; //PantallaGO
+    public TextMeshProUGUI Text_HC; //PantallaGO
+
+     float TimerSC;
+     float TimerHC;
+    public TextMeshProUGUI Text_TSC;
+    public TextMeshProUGUI Text_THC;
 
     public GameObject Demon;
     public GameObject GameOverMenu;
 
     public float timer = 1.6f;
 
-
+    public bool isActivateHM;
     void Start()
     {
-        Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F2");
+        Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F0");
+        Text_THC.text = PlayerPrefs.GetFloat("HighScoreTime").ToString("F2");
     }
     void Update()
     {
-        //Reemplazar el Delta.Time por el puntaje real
-
         ScoresGH();
-
-        if (Demon.activeSelf == true)
+        TimeScoreHC();
+        if (Demon != null && Demon.activeSelf == true)
         {
             GameOverMenu.SetActive(false);
         }
-        else
+        else if (Demon != null && Demon.activeSelf == false)
         {
             timer -= Time.deltaTime;
             if ( timer <= 0)
             {
                 GameOverMenu.SetActive(true);
-            }
-            
+            }          
         }
-    }
 
+        isActivateHM = HardcoreMODE.isHardcore;
+    }
     public void MN_BotonStart()
     {
         SceneManager.LoadScene(1);
@@ -61,23 +65,40 @@ public class MenuManeger : MonoBehaviour
     {
         SceneManager.LoadScene(escena);
     }
-
    public void ScoresGH()
     {
-        //score += Time.deltaTime;        
-        //Mathf.Round(score += Time.deltaTime); LUEGO SE AGREGA LO DEL TIEMPO EN PANTALLA GAMEOVER
+       if(Text_Score != null)
+        {
+            Text_Score.text = "Ships: " + score.ToString("F0");
+        }
 
-        Text_Score.text = "Ships: " + score.ToString("F2");
-        Text_SC.text = score.ToString("F2");
+        if (Text_SC != null)
+        {
+            Text_SC.text = score.ToString("F0");
+        }
         
         if (Hcore < score)
         {
             Hcore = score;
             PlayerPrefs.SetFloat("HighScore", Hcore);
-            Text_HC.text = Hcore.ToString("F2");
-        }
-       
-        
+            Text_HC.text = Hcore.ToString("F0");
+        }              
     }
+    public void TimeScoreHC()
+    {      
+        
+        if (Text_TSC != null)
+        {
+            Mathf.Round(TimerSC += Time.deltaTime);
+            Text_TSC.text = TimerSC.ToString("F2");
+        }
+            
 
+        if (TimerHC < TimerSC)
+        {
+            TimerHC = TimerSC;
+            PlayerPrefs.SetFloat("HighScoreTime", TimerHC);
+            Text_THC.text = TimerHC.ToString("F2");
+        }
+    }
 }
