@@ -15,9 +15,10 @@ public class Controller : MonoBehaviour
 	//GrabChunk | isReady | Launched
 
 	float TimerDead;
+	public ParticleSystem explosion;
 	public AudioSource SoundSource;
 	public AudioClip[] SoundsDemon;
-	//Throw | Grab
+	//Throw | Grab | Dead
 
 	void Start()
 	{
@@ -74,7 +75,7 @@ public class Controller : MonoBehaviour
 		rb.velocity = new Vector3(horizontal, vertical, 0);
 
 		isWasHurt();
-		if (FowardMovement.ReadyToLaunch == true) 
+		if (ChunksController.ReadyToLaunch == true) 
 		{
 			if (Input.GetKeyUp(KeyCode.Space))//Agarra Chunk
 			{
@@ -87,6 +88,7 @@ public class Controller : MonoBehaviour
             {				
 				CH_Demon_Anim.SetBool("GrabChunk", false);
 				CH_Demon_Anim.SetBool("isReady", true);
+				
 			}			
         } 
         if (Input.GetKey(KeyCode.Q)) //Lanza Chunk
@@ -116,13 +118,13 @@ public class Controller : MonoBehaviour
 
 		if (HealthDemon <= 0)
 		{
-			gameObject.GetComponent<DeadAnim>().isDead = true;
-
-			TimerDead += Time.deltaTime; 
-			if(TimerDead > 0.01f)
-            {
+			gameObject.layer = 0;
+			//gameObject.GetComponent<DeadAnim>().isDead = true;		
+			//TimerDead += Time.deltaTime; 
+			//if(TimerDead > 0.01f)
+            //{
 				gameObject.SetActive(false);
-			}
+			//}
 		}
 	}
 
@@ -139,5 +141,13 @@ public class Controller : MonoBehaviour
 		}
     }
 
+    private void OnDisable()
+    {
+		gameObject.layer = 0;
+		SoundSource.clip = SoundsDemon[2];
+		SoundSource.PlayOneShot(SoundSource.clip);
+		explosion.transform.position = transform.position;
+		Instantiate<ParticleSystem>(explosion);
+	}
 
 }

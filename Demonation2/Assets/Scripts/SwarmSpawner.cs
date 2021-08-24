@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidSpawner : MonoBehaviour
+public class SwarmSpawner : MonoBehaviour
 {
-	public GameObject[] prefabs;
-	public float[] EnemiesForSeconds = { 2f, 4f };
+	public GameObject prefabs;
+	public float[] EnemiesForSeconds = { 10f, 15f };
 
 
 	// Use this for initialization
@@ -23,9 +23,8 @@ public class AsteroidSpawner : MonoBehaviour
 	void Spawn()
 	{
 		// instantiate a random enemy past the right egde of the screen, facing left
-		Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(15f, Random.Range(24, 30f), 27.7f), Quaternion.Euler(0f, 0f, 0f));
+		Instantiate(prefabs, new Vector3(transform.position.x, Random.Range(-11f, 10f), 27.7f), Quaternion.Euler(-35f, -90f, 0f));
 
 		Invoke("Spawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
 	}
 }
-

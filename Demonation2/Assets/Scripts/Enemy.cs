@@ -64,11 +64,10 @@ public class Enemy : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ObjectDestroy") && other.gameObject.layer == 6)
+        if (other.gameObject.CompareTag("ObjectDestroy") && (other.gameObject.layer == 6 || other.gameObject.layer == 7))
         {
             gameObject.GetComponent<DeadAnim>().isDead = true;
-            isChunkCollision = true;
-            Destroy(gameObject, 0.01f);   
+            isChunkCollision = true;  
         }
     }
 

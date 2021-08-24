@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3584093385427536978}
   - component: {fileID: 6656462964024597592}
-  - component: {fileID: 372534867677101481}
+  - component: {fileID: 3305144262619636665}
   m_Layer: 0
   m_Name: Asteroide03
   m_TagString: ObjectDestroy
@@ -45,11 +45,11 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &372534867677101481
+--- !u!114 &3305144262619636665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,12 +58,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4248743128205104872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 156288c28b3711e4cba29bafdd6b6773, type: 3}
+  m_Script: {fileID: 11500000, guid: d1b03ca8f968c2f42bcbdad1c1e5ce97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ForceLaunch: 50
   IsReadyLauch: 0
-  MovingSpeedChunk: 5
+  MovingSpeedAsteroid: 4
 --- !u!1001 &1509873342826484164
 PrefabInstance:
   m_ObjectHideFlags: 0

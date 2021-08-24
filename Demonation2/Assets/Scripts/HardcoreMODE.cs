@@ -6,14 +6,6 @@ using UnityEngine.UI;
 public class HardcoreMODE : MonoBehaviour
 {
     public static bool isHardcore;
-    bool isHardcoreActivate;
-
-    
-
-    private void Start()
-    {
-        
-    }
 
     public void ActivateHM(bool isActivate)
     {

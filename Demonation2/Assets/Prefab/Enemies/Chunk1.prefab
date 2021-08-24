@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6587702150080064310}
   - component: {fileID: 5034424270148968758}
   m_Layer: 0
-  m_Name: Asteroide04
+  m_Name: Chunk1
   m_TagString: ObjectDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
