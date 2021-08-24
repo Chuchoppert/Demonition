@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
 
 	private GameObject prefabInstance;
 
-	//public static int AmountEnemies = 7;
 	public int AmountEnemies = 7;
 	public int Cuantostenemos;
 	GameObject[] EachEnemy;
