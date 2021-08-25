@@ -5408,7 +5408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aadb8af744ff84e835f7ca9063cc5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 25
   HealthDemon: 2
   CH_Demon_Anim: {fileID: 2112267983}
   explosion: {fileID: 572777370292448413, guid: f1c0333678620a548b5b60140f0ac124, type: 3}
