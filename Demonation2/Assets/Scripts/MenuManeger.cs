@@ -82,6 +82,8 @@ public class MenuManeger : MonoBehaviour
         {
             Text_SC.text = score.ToString("F0");
         }
+
+        Hcore = PlayerPrefs.GetFloat("HighScore");
            // 0   <  15
         if (Hcore < score)
         {
