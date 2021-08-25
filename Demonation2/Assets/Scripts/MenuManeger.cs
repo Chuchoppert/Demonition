@@ -8,13 +8,13 @@ using TMPro;
 public class MenuManeger : MonoBehaviour
 {
     public float score;
-     float Hcore;
+    float Hcore = 0;
     public TextMeshProUGUI Text_Score; //pantallaGame
     public TextMeshProUGUI Text_SC; //PantallaGO
     public TextMeshProUGUI Text_HC; //PantallaGO
 
-     float TimerSC;
-     float TimerHC;
+    float TimerSC;
+    float TimerHC;
     public TextMeshProUGUI Text_TSC;
     public TextMeshProUGUI Text_THC;
 
@@ -32,10 +32,11 @@ public class MenuManeger : MonoBehaviour
     void Update()
     {
         ScoresGH();
-        TimeScoreHC();
+        //TimeScoreHC();
         if (Demon != null && Demon.activeSelf == true)
         {
             GameOverMenu.SetActive(false);
+            TimerSC += Time.deltaTime;
         }
         else if (Demon != null && Demon.activeSelf == false)
         {
@@ -67,7 +68,12 @@ public class MenuManeger : MonoBehaviour
     }
    public void ScoresGH()
     {
-       if(Text_Score != null)
+        if (Text_TSC != null)
+        {          
+            Text_TSC.text = TimerSC.ToString("F2");
+        }
+
+        if (Text_Score != null)
         {
             Text_Score.text = "Ships: " + score.ToString("F0");
         }
@@ -76,29 +82,20 @@ public class MenuManeger : MonoBehaviour
         {
             Text_SC.text = score.ToString("F0");
         }
-        
+           // 0   <  15
         if (Hcore < score)
         {
             Hcore = score;
             PlayerPrefs.SetFloat("HighScore", Hcore);
             Text_HC.text = Hcore.ToString("F0");
+
+            TimerHC = TimerSC;
+            Text_THC.text = Text_TSC.text;
+            PlayerPrefs.SetFloat("HighScoreTime", TimerHC);               
         }              
     }
     public void TimeScoreHC()
-    {      
-        
-        if (Text_TSC != null)
-        {
-            Mathf.Round(TimerSC += Time.deltaTime);
-            Text_TSC.text = TimerSC.ToString("F2");
-        }
-            
-
-        if (TimerHC < TimerSC)
-        {
-            TimerHC = TimerSC;
-            PlayerPrefs.SetFloat("HighScoreTime", TimerHC);
-            Text_THC.text = TimerHC.ToString("F2");
-        }
+    {            
+          
     }
 }

@@ -20,13 +20,14 @@ public class Enemy : MonoBehaviour
     private float DistanceToStop;
     public float MovingSpeedEnemy = 2f;
 
-    GameObject soundSource;
+    GameObject SoundSourceGO;
+    public AudioClip SoundsBullet;
     bool isChunkCollision;
 
     void Start()
     {
-        soundSource = GameObject.FindGameObjectWithTag("SdEnemies");
-        gameObject.GetComponent<DeadAnim>().SoundSource = soundSource.GetComponent<AudioSource>();
+        SoundSourceGO = GameObject.FindGameObjectWithTag("SdEnemies");
+        gameObject.GetComponent<DeadAnim>().SoundSource = SoundSourceGO.GetComponent<AudioSource>();
         Player = GameObject.FindWithTag("Player");
 
         DistanceToStop = Random.Range(enemyLeftBorder, enemyRightBorder);
@@ -42,10 +43,10 @@ public class Enemy : MonoBehaviour
 
             transform.LookAt(Player.transform);
         }       
-        if (Player == null)
+       /* if (Player == null)
         {
             Destroy(gameObject, 0.5f);
-        }
+        }*/
         shootControl();
 
         if (gameObject.transform.position.x > DistanceToStop)
@@ -81,6 +82,10 @@ public class Enemy : MonoBehaviour
                 shootTime = shootInterval;
                 GameObject bullet = Instantiate<GameObject>(bullet_Prefab);
                 bullet.transform.position = new Vector3(transform.position.x + 7.5f, transform.position.y, transform.position.z);
+
+                SoundSourceGO.GetComponent<AudioSource>().clip = SoundsBullet;
+                SoundSourceGO.GetComponent<AudioSource>().PlayOneShot(SoundSourceGO.GetComponent<AudioSource>().clip);
+
                 if (Player != null)
                 {
                     bullet.transform.LookAt(Player.transform.position);
