@@ -56,7 +56,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Pixel Intv Atlas Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: UNDERLAY_ON
+  m_ShaderKeywords: GLOW_ON UNDERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -101,9 +101,9 @@ Material:
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 0.04
-    - _GlowOffset: 0.04
-    - _GlowOuter: 0.16
+    - _GlowInner: 0.02
+    - _GlowOffset: 0.41
+    - _GlowOuter: 0.12
     - _GlowPower: 1
     - _GradientScale: 10
     - _LightAngle: 3.1416
@@ -117,10 +117,10 @@ Material:
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
     - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.59938526
+    - _ScaleRatioC: 0.6834112
     - _ScaleX: 1
     - _ScaleY: 1
-    - _ShaderFlags: 0
+    - _ShaderFlags: 1
     - _Sharpness: 0
     - _SpecularPower: 2
     - _Stencil: 0
@@ -130,10 +130,10 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 1024
     - _TextureWidth: 1024
-    - _UnderlayDilate: 0.58
-    - _UnderlayOffsetX: 0.58
-    - _UnderlayOffsetY: 0.44
-    - _UnderlaySoftness: 0.06
+    - _UnderlayDilate: 0.07
+    - _UnderlayOffsetX: 1
+    - _UnderlayOffsetY: 1
+    - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
     - _WeightBold: 0.75
