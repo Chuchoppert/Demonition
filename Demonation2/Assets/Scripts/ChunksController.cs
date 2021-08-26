@@ -19,7 +19,7 @@ public class ChunksController : MonoBehaviour
     void Start()
     {
         MenuManager = GameObject.FindWithTag("MenuManag");
-        Invoke("AddCollider", 1f);
+        Invoke("AddCollider", 0.5f);
         Player = GameObject.FindWithTag("Player");
     }
 
