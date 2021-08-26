@@ -93,8 +93,7 @@ public class Controller : MonoBehaviour
         } 
         if (Input.GetKey(KeyCode.Q)) //Lanza Chunk
 		{
-			SoundSource.clip = SoundsDemon[0];
-			SoundSource.PlayOneShot(SoundSource.clip);
+			
 
 			CH_Demon_Anim.SetBool("isReady", false);
 			CH_Demon_Anim.SetTrigger("Launched");	
@@ -102,6 +101,8 @@ public class Controller : MonoBehaviour
 		else if (Input.GetKeyUp(KeyCode.Q))
         {
 			CH_Demon_Anim.ResetTrigger("Launched");
+			SoundSource.clip = SoundsDemon[0];
+			SoundSource.PlayOneShot(SoundSource.clip);
 		}
 	}
 
@@ -119,12 +120,8 @@ public class Controller : MonoBehaviour
 		if (HealthDemon <= 0)
 		{
 			gameObject.layer = 0;
-			//gameObject.GetComponent<DeadAnim>().isDead = true;		
-			//TimerDead += Time.deltaTime; 
-			//if(TimerDead > 0.01f)
-            //{
-				gameObject.SetActive(false);
-			//}
+			gameObject.SetActive(false);
+
 		}
 	}
 
