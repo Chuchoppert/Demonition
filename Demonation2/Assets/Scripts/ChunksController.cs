@@ -19,17 +19,17 @@ public class ChunksController : MonoBehaviour
     void Start()
     {
         MenuManager = GameObject.FindWithTag("MenuManag");
-        Invoke("AddCollider", 1f);
+        Invoke("AddCollider", 0.5f);
         Player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
-        if (Player == null)
+        /*if (Player == null)
         {
             Destroy(gameObject, 0.5f);
         }
-        ReadyToLaunch = IsReadyLauch;
+        ReadyToLaunch = IsReadyLauch;*/
 
         if (IsReadyLauch == false)
         {
@@ -69,11 +69,12 @@ public class ChunksController : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
-        {
-            MenuManager.GetComponent<MenuManeger>().score += 1;
+        {          
             if(this.gameObject.layer == 6)
             {
+                MenuManager.GetComponent<MenuManeger>().score += 1;
                 Destroy(this.gameObject);
+                this.gameObject.layer = 0;
                 Destroy(other.gameObject, 0.1f);               
             }          
         }

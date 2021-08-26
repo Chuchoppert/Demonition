@@ -26,10 +26,10 @@ public class Asteroids : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player == null)
+        /*if (Player == null)
         {
             Destroy(gameObject, 0.5f);
-        }
+        }*/
         ChunksController.ReadyToLaunch = IsReadyLauch;
 
         if (IsReadyLauch == false && this.isLaunched == false)
@@ -69,9 +69,10 @@ public class Asteroids : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            MenuManager.GetComponent<MenuManeger>().score += 1;
+            
             if (this.gameObject.layer == 7)
             {
+                MenuManager.GetComponent<MenuManeger>().score += 1;
                 Destroy(this.gameObject);
                 Destroy(other.gameObject, 0.1f);
             }

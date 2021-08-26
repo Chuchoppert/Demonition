@@ -1,0 +1,13 @@
+Marco:
+-a veces los disparos enemigos atraviesan los asteroides
+-a veces no se puede agarrar el asteroide
+-no sé si asi lo hayan planeado, pero es dificil recolectar mas de 1 asteroide
+-es dificil esquivar, posiblemente por la velocidad de movimiento
+-la velocidad de regreso del meteorito la siento muy lenta
+-es muy facil morir cuando te quedas sin munición
+
+?:
+Pues solo es que al presionar la Q se va la música,
+que especifiquen que los asteroides sólo se pueden agarrar si los topas de frente
+y la forma en que aparecen estos, si te pierdes el primero maybe estés muerto.
+De ahí en fuera me gustó, tiene buena jugabilidad y los sonidos retro quedan al 100 con la estética

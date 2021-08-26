@@ -57,13 +57,13 @@ public class Controller : MonoBehaviour
 			horizontal = Input.GetAxis("Horizontal") * speed;
 
 			// constrain movement within the bounds of the camera
-			if (transform.position.x < -25f)
+			if (transform.position.x < -32f)
 			{
-				transform.position = new Vector3(-25f, transform.position.y, transform.position.z);
+				transform.position = new Vector3(-32f, transform.position.y, transform.position.z);
 			}
-			if (transform.position.x > -1f)
+			if (transform.position.x > 32f)
 			{
-				transform.position = new Vector3(-1f, transform.position.y, transform.position.z);
+				transform.position = new Vector3(32f, transform.position.y, transform.position.z);
 			}
 		}
 		else
