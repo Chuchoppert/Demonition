@@ -140,11 +140,14 @@ public class Controller : MonoBehaviour
 
     private void OnDisable()
     {
-		gameObject.layer = 0;
-		SoundSource.clip = SoundsDemon[2];
-		SoundSource.PlayOneShot(SoundSource.clip);
-		explosion.transform.position = transform.position;
-		Instantiate<ParticleSystem>(explosion);
+		if(HealthDemon == 0)
+        {
+			gameObject.layer = 0;
+			SoundSource.clip = SoundsDemon[2];
+			SoundSource.PlayOneShot(SoundSource.clip);
+			explosion.transform.position = transform.position;
+			Instantiate<ParticleSystem>(explosion);
+		}
 	}
 
 }

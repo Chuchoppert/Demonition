@@ -148,7 +148,7 @@ PlayerSettings:
   applicationIdentifier:
     Standalone: com.DefaultCompany.Demonition
   buildNumber:
-    Standalone: 0
+    Standalone: 3
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
