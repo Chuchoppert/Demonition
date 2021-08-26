@@ -75,7 +75,7 @@ public class MenuManeger : MonoBehaviour
 
         if (Text_Score != null)
         {
-            Text_Score.text = "Ships: " + score.ToString("F0");
+            Text_Score.text = "Score: " + score.ToString("F0");
         }
 
         if (Text_SC != null)
