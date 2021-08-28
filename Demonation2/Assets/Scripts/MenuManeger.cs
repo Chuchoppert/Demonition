@@ -26,8 +26,12 @@ public class MenuManeger : MonoBehaviour
     public bool isActivateHM;
     void Start()
     {
-        Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F0");
-        Text_THC.text = PlayerPrefs.GetFloat("HighScoreTime").ToString("F2");
+        if (Application.isEditor == false)
+        {
+            Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F0");
+            Text_THC.text = PlayerPrefs.GetFloat("HighScoreTime").ToString("F2");
+        }
+       
     }
     void Update()
     {
@@ -64,7 +68,8 @@ public class MenuManeger : MonoBehaviour
     }
     public void BotonRestart(string escena)
     {
-        SceneManager.LoadScene(escena);
+        Time.timeScale = 0f;
+        SceneManager.LoadScene(escena);   
     }
    public void ScoresGH()
     {

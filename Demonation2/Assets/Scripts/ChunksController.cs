@@ -28,8 +28,8 @@ public class ChunksController : MonoBehaviour
         /*if (Player == null)
         {
             Destroy(gameObject, 0.5f);
-        }
-        ReadyToLaunch = IsReadyLauch;*/
+        }*/
+        ReadyToLaunch = IsReadyLauch;
 
         if (IsReadyLauch == false)
         {
