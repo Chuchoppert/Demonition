@@ -1,0 +1,14 @@
+Marco:
+-a veces los disparos enemigos atraviesan los asteroides                            // Sucede si vas por el chunk que aun no tiene creado el collider
+-a veces no se puede agarrar el asteroide                                          //supuestamente RESUELTO    
+-no sé si asi lo hayan planeado, pero es dificil recolectar mas de 1 asteroide      //solo se puede recolectar 1
+-es dificil esquivar, posiblemente por la velocidad de movimiento                   //falta explicar dinamica de cobertura
+-la velocidad de regreso del meteorito la siento muy lenta                          //x2 lo de arriba
+-es muy facil morir cuando te quedas sin munición
+
+?:
+Pues solo es que al presionar la Q se va la música,                                //RESUELTO _ El audio de Throw se ejecutaba varias veces y se corrigio el bajo volumen y el alto volumen de bullet
+que especifiquen que los asteroides sólo se pueden agarrar si los topas de frente   //No esta la dinamica pero falta explicar eso en el GDD
+y la forma en que aparecen estos, si te pierdes el primero maybe estés muerto.      // Quizas bajar velocidad del asteroide? (Creo que RESUELTO)
+De ahí en fuera me gustó, tiene buena jugabilidad y 
+los sonidos retro quedan al 100 con la estética                                     //(Y)

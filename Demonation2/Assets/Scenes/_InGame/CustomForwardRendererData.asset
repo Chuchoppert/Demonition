@@ -42,7 +42,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 55
+        m_Bits: 247
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: 29b232d8e09e14d4586f0160124870a1, type: 2}
     overrideMaterialPassIndex: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
       overrideCamera: 0
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
-      cameraFieldOfView: 67
+      cameraFieldOfView: 60
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

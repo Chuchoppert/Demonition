@@ -165,6 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eaea9ca2f8c8024d83709abf949c1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovingSpeed: 2
+  MovingSpeed: 5
   effect: {fileID: 8300000, guid: 8f5ecb0c047d2c04a93ed37efbf9a2ee, type: 3}
   standbyTime: 0

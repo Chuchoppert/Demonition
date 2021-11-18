@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Swarm : MonoBehaviour
 {
-    public float MovingSpeed= 2f;
+    public float MovingSpeed= 5f;
     public AudioClip effect;
     bool reached = false;
     public float standbyTime;
@@ -17,12 +17,12 @@ public class Swarm : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x <= -23f && !reached)
+        if (transform.position.x <= -28f && !reached)
         {
-            transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World);          
+            transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World);
         }
 
-        if (transform.position.x >= -24.4f)
+        if (transform.position.x >= -28f)
         {
             //Debug.Log("Toggle reached");
             reached = true;
@@ -33,13 +33,13 @@ public class Swarm : MonoBehaviour
             standbyTime += Time.deltaTime;
         }
 
-        if (standbyTime >= 2)
+        if (standbyTime >= 1.2f)
         {
-            MovingSpeed = 4f;
+            MovingSpeed = 25f;
             transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World);
         }
 
-        if (transform.position.x > 33f)
+        if (transform.position.x > 36f)
         {
             Destroy(gameObject);
         }

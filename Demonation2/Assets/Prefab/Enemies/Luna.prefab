@@ -100,11 +100,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chunk_Prefab: {fileID: 9079894710688003818, guid: e097d5e7ee88f0f4bb39189cec9f785b, type: 3}
   bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
-  DistanceToShoot: 80
-  shootInterval: 1
+  DistanceToShoot: 70
+  shootInterval: 2
   enemyLeftBorder: 8
   enemyRightBorder: 28
   MovingSpeedEnemy: 10
+  SoundsBullet: {fileID: 8300000, guid: ed4c36d157dbf70469ef8dc07b51d2f4, type: 3}
 --- !u!135 &5719106727670322791
 SphereCollider:
   m_ObjectHideFlags: 0
