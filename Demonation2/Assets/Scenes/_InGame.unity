@@ -4768,6 +4768,7 @@ MonoBehaviour:
   Text_Score: {fileID: 124895940}
   Text_SC: {fileID: 1256479788}
   Text_HC: {fileID: 1569125747}
+  ExacTime: 0
   Text_TSC: {fileID: 1566014746}
   Text_THC: {fileID: 585307709}
   Demon: {fileID: 2112267980}
@@ -5497,6 +5498,10 @@ PrefabInstance:
     - target: {fileID: 6339909649280900062, guid: e7af37f2aebffb84c8687c47ce90e6e9, type: 3}
       propertyPath: m_Name
       value: VolumeGeneral
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339909649280900062, guid: e7af37f2aebffb84c8687c47ce90e6e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6339909649280900063, guid: e7af37f2aebffb84c8687c47ce90e6e9, type: 3}
       propertyPath: m_RootOrder

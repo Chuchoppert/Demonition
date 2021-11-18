@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class MenuManeger : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class MenuManeger : MonoBehaviour
 
     float TimerSC;
     float TimerHC;
+    public float ExacTime;
     public TextMeshProUGUI Text_TSC;
     public TextMeshProUGUI Text_THC;
 
@@ -26,27 +28,41 @@ public class MenuManeger : MonoBehaviour
     public bool isActivateHM;
     void Start()
     {
-        if (Application.isEditor == false)
-        {
+       // if (Application.isEditor == false)
+       //{
             Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F0");
             Text_THC.text = PlayerPrefs.GetFloat("HighScoreTime").ToString("F2");
-        }
+       // }
        
     }
     void Update()
     {
+        
         ScoresGH();
-        //TimeScoreHC();
         if (Demon != null && Demon.activeSelf == true)
         {
-            GameOverMenu.SetActive(false);
             TimerSC += Time.deltaTime;
+            GameOverMenu.SetActive(false);           
         }
         else if (Demon != null && Demon.activeSelf == false)
         {
+            ExacTime = TimerSC;
+            if (Hcore < score)
+            {            
+                Text_THC.text = ExacTime.ToString("F2");
+                //Text_THC.text = Text_TSC.text;
+
+                PlayerPrefs.SetFloat("HighScoreTime", Single.Parse(Text_THC.text));
+
+                Hcore = score;
+                PlayerPrefs.SetFloat("HighScore", Hcore);
+                Text_HC.text = Hcore.ToString("F0");
+            }
+
             timer -= Time.deltaTime;
             if ( timer <= 0)
             {
+                
                 GameOverMenu.SetActive(true);
             }          
         }
@@ -68,41 +84,30 @@ public class MenuManeger : MonoBehaviour
     }
     public void BotonRestart(string escena)
     {
-        Time.timeScale = 0f;
         SceneManager.LoadScene(escena);   
     }
    public void ScoresGH()
     {
-        if (Text_TSC != null)
-        {          
-            Text_TSC.text = TimerSC.ToString("F2");
-        }
+        Hcore = PlayerPrefs.GetFloat("HighScore");
 
-        if (Text_Score != null)
+        if (Text_Score != null) //Game
         {
             Text_Score.text = "Score: " + score.ToString("F0");
         }
 
-        if (Text_SC != null)
+        if (Text_SC != null) //Game over
         {
             Text_SC.text = score.ToString("F0");
         }
 
-        Hcore = PlayerPrefs.GetFloat("HighScore");
-           // 0   <  15
-        if (Hcore < score)
+        if (Text_TSC != null)
         {
-            Hcore = score;
-            PlayerPrefs.SetFloat("HighScore", Hcore);
-            Text_HC.text = Hcore.ToString("F0");
-
-            TimerHC = TimerSC;
-            Text_THC.text = Text_TSC.text;
-            PlayerPrefs.SetFloat("HighScoreTime", TimerHC);               
-        }              
+            Text_TSC.text = ExacTime.ToString("F2");
+        }                     
     }
-    public void TimeScoreHC()
-    {            
-          
+
+    public void ResetScore()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
