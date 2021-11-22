@@ -49,7 +49,7 @@ public class Swarm : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.layer == 8)
         {
             AudioSource.PlayClipAtPoint(effect, new Vector3(0, 0, 0));
             Destroy(gameObject);
