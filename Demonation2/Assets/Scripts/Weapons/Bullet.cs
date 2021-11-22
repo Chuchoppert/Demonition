@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
+        Physics.IgnoreLayerCollision(14, 13, true);
     }
 
     // Update is called once per frame
@@ -33,15 +34,14 @@ public class Bullet : MonoBehaviour
     {
         transform.position += transform.forward * speedBullet * Time.fixedDeltaTime;
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {        
-            Destroy(gameObject);
-        }
-        else if (other.gameObject.CompareTag("ObjectDestroy"))
+        if (other.gameObject.layer == 8 || other.gameObject.layer == 12 || other.gameObject.layer == 9)
         {
             Destroy(gameObject);
         }
+
+
     }
 }

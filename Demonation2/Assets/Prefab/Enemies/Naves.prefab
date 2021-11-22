@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8656415646251547635}
   - component: {fileID: 3562548201894013771}
   - component: {fileID: 4775514556352238864}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Naves
   m_TagString: Enemy
   m_Icon: {fileID: 0}

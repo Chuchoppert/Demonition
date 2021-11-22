@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9171360567846428463}
   - component: {fileID: 6232331386402924619}
   - component: {fileID: 1758098262539997235}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Planeta
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -97,14 +97,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304b06e8a02e9ff489515595565204f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Chunk_Prefab: {fileID: 3357704765467874458, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
-  bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
+  EnemyLimitsBorder:
+  - 8
+  - 28
   DistanceToShoot: 70
-  shootInterval: 2
-  enemyLeftBorder: 8
-  enemyRightBorder: 28
+  ShootInterval: 1.5
   MovingSpeedEnemy: 10
-  SoundsBullet: {fileID: 8300000, guid: ed4c36d157dbf70469ef8dc07b51d2f4, type: 3}
+  bullet_Prefab: {fileID: 7016605488464515005, guid: dbea7017031da9647b41080b76f0a483, type: 3}
+  Chunk_Prefab: {fileID: 3357704765467874458, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
+  SoundsEnemy:
+  - {fileID: 8300000, guid: ed4c36d157dbf70469ef8dc07b51d2f4, type: 3}
+  - {fileID: 8300000, guid: 0fd25545165198c4b809b551f3208e5a, type: 3}
+  - {fileID: 8300000, guid: 8f5ecb0c047d2c04a93ed37efbf9a2ee, type: 3}
+  NumberDeadSound: 1
+  SoundFromEnemy: {fileID: 0}
+  Explosion: {fileID: 572777370292448413, guid: 86bdfb7f7ab79774c8fdac3a585c4d5d, type: 3}
 --- !u!114 &9171360567846428463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,12 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492cc98d643d479428c1ec02a5997434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 572777370292448413, guid: 86bdfb7f7ab79774c8fdac3a585c4d5d, type: 3}
-  SoundSource: {fileID: 0}
-  Sounds:
-  - {fileID: 8300000, guid: 0fd25545165198c4b809b551f3208e5a, type: 3}
-  - {fileID: 8300000, guid: 8f5ecb0c047d2c04a93ed37efbf9a2ee, type: 3}
-  isDead: 0
 --- !u!135 &6232331386402924619
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6966102688491771355}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 7.211532
@@ -150,5 +151,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
