@@ -4,36 +4,19 @@ using UnityEngine;
 
 public class DeadAnim : MonoBehaviour
 {
-    public ParticleSystem explosion;
-    public AudioSource SoundSource;
-    public AudioClip[] Sounds;
+    bool oncetime = false;
 
-    public bool isDead;
-
-    // Start is called before the first frame update
-    void Start()
-    {       
-
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void DeadAnimSound(AudioClip[] DeadSound, ParticleSystem DeadExplosion, AudioSource SoundSource, int NumberDead)
     {
-        if (isDead == true) 
+        if (oncetime == false)
         {
-            Invoke("DeadAnimSound", 0f);
-        }
-    }
-     void DeadAnimSound()
-    {
-        if (isDead == true)
-        {
-            SoundSource.clip = Sounds[Random.Range(0, Sounds.Length)];
+            SoundSource.clip = DeadSound[Random.Range(NumberDead, DeadSound.Length)];
             SoundSource.PlayOneShot(SoundSource.clip);
 
-            explosion.transform.position = transform.position;
-            Instantiate<ParticleSystem>(explosion);
-            isDead = false;
+            DeadExplosion.transform.position = this.transform.position;
+            Instantiate<ParticleSystem>(DeadExplosion);
+
+            oncetime = true;
         }
     }
 }

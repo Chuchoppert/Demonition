@@ -3,106 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 using TMPro;
 
 public class MenuManeger : MonoBehaviour
 {
-    public float score;
-    float Hcore = 0;
-    public TextMeshProUGUI Text_Score; //pantallaGame
-    public TextMeshProUGUI Text_SC; //PantallaGO
-    public TextMeshProUGUI Text_HC; //PantallaGO
+    [Header("Look")]
+    public bool ActivateReset = false;
+    public TextMeshProUGUI Text_HScoreInMenu;
+    public TextMeshProUGUI Text_HTimeInMenu;
 
-    float TimerSC;
-    float TimerHC;
-    public TextMeshProUGUI Text_TSC;
-    public TextMeshProUGUI Text_THC;
-
-    public GameObject Demon;
-    public GameObject GameOverMenu;
-
-    public float timer = 1.6f;
-
-    public bool isActivateHM;
     void Start()
     {
-        if (Application.isEditor == false)
+        if(Text_HScoreInMenu != null && Text_HTimeInMenu != null)
         {
-            Text_HC.text = PlayerPrefs.GetFloat("HighScore").ToString("F0");
-            Text_THC.text = PlayerPrefs.GetFloat("HighScoreTime").ToString("F2");
-        }
-       
+            Text_HScoreInMenu.text = PlayerPrefs.GetFloat("HighScore").ToString("F0");
+            Text_HTimeInMenu.text = PlayerPrefs.GetFloat("TimeHighScore").ToString("F2");
+        } 
     }
+
     void Update()
     {
-        ScoresGH();
-        //TimeScoreHC();
-        if (Demon != null && Demon.activeSelf == true)
+        if(ActivateReset == true)
         {
-            GameOverMenu.SetActive(false);
-            TimerSC += Time.deltaTime;
+            PlayerPrefs.DeleteAll();
+            SceneManager.LoadScene("_MenuPrincipal");
+            ActivateReset = false;
         }
-        else if (Demon != null && Demon.activeSelf == false)
-        {
-            timer -= Time.deltaTime;
-            if ( timer <= 0)
-            {
-                GameOverMenu.SetActive(true);
-            }          
-        }
-
-        isActivateHM = HardcoreMODE.isHardcore;
-    }
-    public void MN_BotonStart()
-    {
-        SceneManager.LoadScene(1);
     }
     public void BotonQuit()
     {
         Debug.Log(0);
         Application.Quit();
     }
-    public void BotonMainMenu()
+    public void SceneAdministrator(string escena)
     {
-        SceneManager.LoadScene(0);
-    }
-    public void BotonRestart(string escena)
-    {
-        Time.timeScale = 0f;
         SceneManager.LoadScene(escena);   
     }
-   public void ScoresGH()
+   /*public void ScoresGH()
     {
-        if (Text_TSC != null)
-        {          
-            Text_TSC.text = TimerSC.ToString("F2");
-        }
+        Hcore = PlayerPrefs.GetFloat("HighScore");
 
-        if (Text_Score != null)
+        if (Text_Score != null) //Game
         {
             Text_Score.text = "Score: " + score.ToString("F0");
         }
 
-        if (Text_SC != null)
+        if (Text_SC != null) //Game over
         {
             Text_SC.text = score.ToString("F0");
         }
 
-        Hcore = PlayerPrefs.GetFloat("HighScore");
-           // 0   <  15
-        if (Hcore < score)
+        if (Text_TSC != null)
         {
-            Hcore = score;
-            PlayerPrefs.SetFloat("HighScore", Hcore);
-            Text_HC.text = Hcore.ToString("F0");
+            Text_TSC.text = ExacTime.ToString("F2");
+        }                     
+    }*/
 
-            TimerHC = TimerSC;
-            Text_THC.text = Text_TSC.text;
-            PlayerPrefs.SetFloat("HighScoreTime", TimerHC);               
-        }              
-    }
-    public void TimeScoreHC()
-    {            
-          
+    public void ResetScore()
+    {
+        ActivateReset = true;
     }
 }

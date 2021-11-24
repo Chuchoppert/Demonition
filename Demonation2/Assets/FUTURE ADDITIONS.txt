@@ -1,0 +1,7 @@
+Highscore monetizado para que el demonio sea customizable/ poder cambiar de demonio(diferentes specs?)
+Que los lassers reboten y afecten el planeta 
+Asteroides diverjan a 45* y afecten a planetas
+Powerups 
+Visibilidad cuando demon pierde una vida 
+Menú de Game Over estilizado como el Menú introductorio.
+

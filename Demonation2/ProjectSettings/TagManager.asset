@@ -10,6 +10,7 @@ TagManager:
   - MenuManag
   - Bullet
   - SdEnemies
+  - SoundDemonLords
   layers:
   - Default
   - TransparentFX
@@ -19,14 +20,14 @@ TagManager:
   - UI
   - LaunchedbyPlayer
   - isAsteroid
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Asteroid
+  - Enemy_Small
+  - Enemy_Big
+  - Chunk
+  - Grab
+  - Bullet_Enemy
+  - Enemy_Naves
   - 
   - 
   - 
