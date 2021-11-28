@@ -112,7 +112,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f5ecb0c047d2c04a93ed37efbf9a2ee, type: 3}
   NumberDeadSound: 1
   SoundFromEnemy: {fileID: 0}
-  Explosion: {fileID: 572777370292448413, guid: 86bdfb7f7ab79774c8fdac3a585c4d5d, type: 3}
+  Explosion: {fileID: 572777370292448415, guid: 86bdfb7f7ab79774c8fdac3a585c4d5d, type: 3}
 --- !u!135 &5719106727670322791
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -124,8 +124,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5.1900578
-  m_Center: {x: 0.045007322, y: 0, z: 0.11793396}
+  m_Radius: 5.1782594
+  m_Center: {x: 0.7325258, y: 0.00000047683716, z: -3.6147904}
 --- !u!54 &4327647120572478048
 Rigidbody:
   m_ObjectHideFlags: 0

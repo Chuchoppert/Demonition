@@ -25,8 +25,9 @@ public class ChunksController : MonoBehaviour
         {
             Physics.IgnoreLayerCollision(12, 10, false);
             Physics.IgnoreLayerCollision(12, 11, false);
-
+           
             this.transform.Translate(-MovingSpeedChunk * 2 * Time.deltaTime, 0, 0, Space.World);
+
             if (transform.position.x < -50f)
             {
                 Destroy(this.gameObject);
@@ -36,7 +37,7 @@ public class ChunksController : MonoBehaviour
         if (ThisWasLaunched == true && ThisWasPicked == true)
         {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
+            
             this.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(ForceLaunch, 0, 0), ForceMode.Impulse);
             if (transform.position.x > 50f)
             {
@@ -58,7 +59,7 @@ public class ChunksController : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //Destroy enemy and add 1 point to score
-                //Enemi_Small                 O             Enemy_Big
+        //Enemi_Small                 O             Enemy_Big
         if ((collision.gameObject.layer == 10 || collision.gameObject.layer == 11) && this.ThisWasPicked == true)
         {
             MenuManager.GetComponent<HUDManager>().ScoreInGame += 1;

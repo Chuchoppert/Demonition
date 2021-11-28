@@ -11,6 +11,10 @@ TagManager:
   - Bullet
   - SdEnemies
   - SoundDemonLords
+  - SpawnerEnemy
+  - Nuke_PW
+  - Vida_PW
+  - Speed_PW
   layers:
   - Default
   - TransparentFX

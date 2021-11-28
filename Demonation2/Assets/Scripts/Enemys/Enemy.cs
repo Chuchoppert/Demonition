@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public AudioClip[] SoundsEnemy; //bullet   |  dead
     public int NumberDeadSound;
     public AudioSource SoundFromEnemy;
-    public ParticleSystem Explosion;
+    public GameObject Explosion;
 
     private GameObject Player;
     private float DistanceToStop;
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         if(distanceFromTarget < DistanceToShoot && Player != null)
         {
             GameObject bullet = Instantiate<GameObject>(bullet_Prefab);
-            bullet.transform.position = new Vector3(transform.position.x + 7.5f, transform.position.y, transform.position.z); //NOTA: modificar origin de los enemies
+            bullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z); //NOTA: modificar origin de los enemies
             bullet.transform.LookAt(Player.transform.position);
 
             SoundFromEnemy.clip = SoundsEnemy[0];

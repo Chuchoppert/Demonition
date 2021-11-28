@@ -16,11 +16,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > 40 || transform.position.x < -60)
+        if (transform.position.x > 45 || transform.position.x < -60)
         {
             Destroy(gameObject);
         }
-        if (transform.position.y > 20 || transform.position.x < -20)
+        if (transform.position.y > 20 || transform.position.y < -20)
         {
             Destroy(gameObject);
         }
@@ -32,7 +32,8 @@ public class Bullet : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position += transform.forward * speedBullet * Time.fixedDeltaTime;
+        //transform.position += transform.forward * speedBullet * Time.fixedDeltaTime;
+        transform.position += transform.forward * speedBullet * Time.fixedDeltaTime; //Modifica esta linea para que sea mas lento.
     }
 
     private void OnTriggerEnter(Collider other)
