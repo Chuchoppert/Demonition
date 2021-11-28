@@ -49,7 +49,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &-489124803419609693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisWasPicked: 0
   ThisWasLaunched: 0
-  ForceLaunch: 10
+  ForceLaunch: 8
   MovingSpeedAsteroid: 4
 --- !u!65 &7342818615094380067
 BoxCollider:
