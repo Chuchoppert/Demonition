@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthDemonLords : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class HealthDemonLords : MonoBehaviour
     public float DamageForBigEnemy = 1f;
     public float DamageForNave = 1f;
 
+    [Header("Set changing color Lerp")]
+    public RawImage RawImage_Camera;
+    public Color[] ColorChanging;
+    [Range(0f, 1f)]
+    public float LerpTime;
+
+    //[Header("Set Power for Power Ups")]
+    //public GameObject PlayerEmpty;
 
     private void Update()
     {
@@ -18,17 +27,13 @@ public class HealthDemonLords : MonoBehaviour
     }
     void DemonLordWasHurt() //Cambia "material" al demonio y si llega a 0, se desactiva  (PASAR A SCRIPT DE DEMONLORD)
     {
-        if (Healt >= 1)
+        if (Healt > 1)
         {
-            gameObject.layer = 8;
+            RawImage_Camera.color = Color.white;
         }
-        else if (Healt == 1)
+        else if (Healt <= 1)
         {
-            gameObject.layer = 3;
-        }
-        else if (Healt <= 0)
-        {
-            gameObject.layer = 8;
+            RawImage_Camera.color = Color.Lerp(ColorChanging[0], ColorChanging[1], Mathf.PingPong(Time.time * LerpTime, 1));
         }
     }
 

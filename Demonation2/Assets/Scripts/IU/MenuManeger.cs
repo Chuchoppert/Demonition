@@ -13,6 +13,8 @@ public class MenuManeger : MonoBehaviour
     public TextMeshProUGUI Text_HScoreInMenu;
     public TextMeshProUGUI Text_HTimeInMenu;
 
+    public TextMeshProUGUI TextMoney;
+
     void Start()
     {
         if(Text_HScoreInMenu != null && Text_HTimeInMenu != null)
@@ -24,9 +26,16 @@ public class MenuManeger : MonoBehaviour
 
     void Update()
     {
-        if(ActivateReset == true)
+        if(TextMoney != null)
         {
-            PlayerPrefs.DeleteAll();
+            TextMoney.text = "Money: " + PlayerPrefs.GetFloat("Money").ToString("F2");
+        }
+
+        if (ActivateReset == true)
+        {
+            PlayerPrefs.SetFloat("HighScore", 0);
+            PlayerPrefs.SetFloat("TimeHighScore", 0);
+
             SceneManager.LoadScene("_MenuPrincipal");
             ActivateReset = false;
         }
@@ -40,26 +49,6 @@ public class MenuManeger : MonoBehaviour
     {
         SceneManager.LoadScene(escena);   
     }
-   /*public void ScoresGH()
-    {
-        Hcore = PlayerPrefs.GetFloat("HighScore");
-
-        if (Text_Score != null) //Game
-        {
-            Text_Score.text = "Score: " + score.ToString("F0");
-        }
-
-        if (Text_SC != null) //Game over
-        {
-            Text_SC.text = score.ToString("F0");
-        }
-
-        if (Text_TSC != null)
-        {
-            Text_TSC.text = ExacTime.ToString("F2");
-        }                     
-    }*/
-
     public void ResetScore()
     {
         ActivateReset = true;

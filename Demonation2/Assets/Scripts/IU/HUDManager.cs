@@ -27,12 +27,19 @@ public class HUDManager : MonoBehaviour
     public GameObject GameoverMenu;
     public float TimeToAppearGameoverMenu = 1.5f;
     public bool isActivateHM;
+    public TextMeshProUGUI TextMoney;
+    private float money;
+    public float earnMoneyperScore;
+
+    private bool OncetimeMoney;
 
     // Start is called before the first frame update
     void Start()
     {
         Text_HScoreInMenu.text = PlayerPrefs.GetFloat("HighScore").ToString("F0");
         Text_HTimeInMenu.text = PlayerPrefs.GetFloat("TimeHighScore").ToString("F2");
+
+        money = PlayerPrefs.GetFloat("Money");
     }
 
     // Update is called once per frame
@@ -55,6 +62,15 @@ public class HUDManager : MonoBehaviour
 
         if (Player.gameObject.activeSelf == false)
         {
+            if(OncetimeMoney == false)
+            {
+                float plusmoney = ScoreInGame * earnMoneyperScore;
+                money += plusmoney;
+                TextMoney.text = money.ToString();
+                PlayerPrefs.SetFloat("Money", money);
+
+                OncetimeMoney = true;
+            }           
             Invoke("ActivateGameoverMenu", TimeToAppearGameoverMenu);
         }
     }
