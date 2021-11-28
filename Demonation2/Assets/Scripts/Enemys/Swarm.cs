@@ -36,7 +36,8 @@ public class Swarm : MonoBehaviour
         if (standbyTime >= 1.2f)
         {
             MovingSpeed = 25f;
-            transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World);
+            //transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World);
+            transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World); //Modifica esta linea para que sea mas lento.
         }
 
         if (transform.position.x > 36f)

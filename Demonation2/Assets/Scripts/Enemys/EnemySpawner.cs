@@ -59,4 +59,12 @@ public class EnemySpawner : MonoBehaviour
 		Invoke("PreSpawn", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1]));
 	}
 
+	public void EliminateAllEnemy()
+    {
+		foreach (GameObject Enemy in EachEnemy)
+        {
+			Destroy(Enemy);
+			GameObject.FindGameObjectWithTag("MenuManag").GetComponent<HUDManager>().ScoreInGame += 1;
+		}
+	}
 }
