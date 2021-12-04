@@ -38,6 +38,8 @@ public class Player_DemonLord : MonoBehaviour
     [Header("Set for PowerUp")]
     public float SpeedPowerUp = 2;
     public float Time_SpeedPW = 5;
+    public float RealFactorSlowMo = 0.3f;
+    public float slowMoDuration = 3f;
 
     private Rigidbody rb;
     private float InputX;  //Horizontal
@@ -52,7 +54,8 @@ public class Player_DemonLord : MonoBehaviour
     private float RealSpeedPowerUp = 1;
     private float WhatPowerReset = 0;
 
-    public static float SpeedSlowMotion; //UTILIZA ESTA LINEA PARA MODIFICAR A TODOS LOS SCRIPT (SOLO BULLET, SWARM Y ASTEROID) REVISA LOS COMENTARIOS Y TE DEJE ABAJO LA BASE (LINEA 244 y 261)
+    public static float slowMotionFactor = 1; //UTILIZA ESTA LINEA PARA MODIFICAR A TODOS LOS SCRIPT (SOLO BULLET, SWARM Y ASTEROID) REVISA LOS COMENTARIOS Y TE DEJE ABAJO LA BASE (LINEA 244 y 261)
+    public static bool SlowMotionActivate = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -223,14 +226,15 @@ public class Player_DemonLord : MonoBehaviour
     }
     void SlowMotionPW()
     {
-        //Haz cambios de la static aqui
+        slowMotionFactor = RealFactorSlowMo;
+        SlowMotionActivate = true;
 
         WhatPowerReset = 2;
-        Invoke("ResetPowerUp", 5);
+        Invoke("ResetPowerUp", slowMoDuration);
     }
     void Speed_PowerUp()
     {
-        RealSpeedPowerUp = SpeedPowerUp;
+        RealSpeedPowerUp = SpeedPowerUp;        
 
         WhatPowerReset = 1;
         Invoke("ResetPowerUp", Time_SpeedPW);
@@ -245,7 +249,8 @@ public class Player_DemonLord : MonoBehaviour
         }
         if(WhatPowerReset == 2)
         {
-            //Variable static aqui reiniciada
+            SlowMotionActivate=false;
+            slowMotionFactor = 1;
             WhatPowerReset = 0;
         }
     }

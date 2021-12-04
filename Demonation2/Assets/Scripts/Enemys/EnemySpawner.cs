@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
 	private GameObject prefabInstance;
 
 	public int AmountEnemies = 7;
+	public int AmountEnemiesHard = 12;
 	public int Cuantostenemos;
 	GameObject[] EachEnemy;
 	bool IsFull;
@@ -67,4 +68,10 @@ public class EnemySpawner : MonoBehaviour
 			GameObject.FindGameObjectWithTag("MenuManag").GetComponent<HUDManager>().ScoreInGame += 1;
 		}
 	}
+
+	public void IncreaseDifficulty()
+    {
+		AmountEnemies = AmountEnemiesHard;
+    }
+
 }

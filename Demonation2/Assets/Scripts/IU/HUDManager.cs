@@ -30,6 +30,7 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI TextMoney;
     private float money;
     public float earnMoneyperScore;
+    public float difficultyCeiling;
 
     private bool OncetimeMoney;
 
@@ -73,6 +74,14 @@ public class HUDManager : MonoBehaviour
             }           
             Invoke("ActivateGameoverMenu", TimeToAppearGameoverMenu);
         }
+
+        if ((ScoreInGame >= difficultyCeiling) && Player_DemonLord.SlowMotionActivate == false)
+        {
+            Debug.Log("Difficulty Increased");
+            GameObject.FindGameObjectWithTag("SpawnerEnemy").GetComponent<EnemySpawner>().IncreaseDifficulty();
+            Player_DemonLord.slowMotionFactor = 1.25f;
+        }
+
     }
 
     void TextTime()

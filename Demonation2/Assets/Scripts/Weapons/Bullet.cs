@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         //transform.position += transform.forward * speedBullet * Time.fixedDeltaTime;
-        transform.position += transform.forward * speedBullet * Time.fixedDeltaTime; //Modifica esta linea para que sea mas lento.
+        transform.position += (transform.forward * speedBullet * Time.fixedDeltaTime) * Player_DemonLord.slowMotionFactor; //Modifica esta linea para que sea mas lento.
     }
 
     private void OnTriggerEnter(Collider other)

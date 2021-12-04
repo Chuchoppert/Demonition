@@ -23,7 +23,7 @@ public class Asteroids : MonoBehaviour
         if (ThisWasPicked == false)
         {
             //this.transform.Translate(new Vector3(0.5f, 1, 0) * -MovingSpeedAsteroid * 5 * Time.deltaTime, Space.Self); 
-            this.transform.Translate(new Vector3(0.5f, 1, 0) * -MovingSpeedAsteroid * 5 * Time.deltaTime, Space.Self);  //Modifica esta linea para que sea mas lento.
+            this.transform.Translate((new Vector3(0.5f, 1, 0) * -MovingSpeedAsteroid * 5 * Time.deltaTime) * Player_DemonLord.slowMotionFactor, Space.Self);  //Modifica esta linea para que sea mas lento.
             if (transform.position.x < -20f)
             {
                 Destroy(this.gameObject);
