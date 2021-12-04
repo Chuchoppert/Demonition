@@ -30,6 +30,13 @@ public class PropsComprados : MonoBehaviour
         {
             TextCost.SetActive(false);
         }
+
+
+        if (Input.GetKey(KeyCode.X) && Input.GetKey(KeyCode.LeftShift))
+        {
+            MoneyPlayer = 100000f;
+            PlayerPrefs.SetFloat("Money", MoneyPlayer);
+        }
     }
 
     public void CheckBought()

@@ -15,6 +15,7 @@ TagManager:
   - Nuke_PW
   - Vida_PW
   - Speed_PW
+  - SlowMotion_PW
   layers:
   - Default
   - TransparentFX

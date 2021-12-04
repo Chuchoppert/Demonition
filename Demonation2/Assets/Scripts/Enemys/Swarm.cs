@@ -37,7 +37,7 @@ public class Swarm : MonoBehaviour
         {
             MovingSpeed = 25f;
             //transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World);
-            transform.Translate(MovingSpeed * 2 * Time.deltaTime, 0, 0, Space.World); //Modifica esta linea para que sea mas lento.
+            transform.Translate((MovingSpeed * 2 * Time.deltaTime) * Player_DemonLord.slowMotionFactor, 0, 0, Space.World); //Modifica esta linea para que sea mas lento.
         }
 
         if (transform.position.x > 36f)
