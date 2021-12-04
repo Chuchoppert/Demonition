@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     private float distanceFromTarget;
     private bool onetime = false;
     private bool onetimeDeadAnim = false;
+    private bool onetimeChunkDestroy = false;
+
 
     void Start()
     {
@@ -77,6 +79,15 @@ public class Enemy : MonoBehaviour
             Invoke("ShootPlayer", ShootInterval);
         }
     }
+    void InstantiateOneTime()
+    {      
+        if (this.onetimeChunkDestroy == false)
+        {
+            this.onetimeChunkDestroy = true;
+            GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
+            Chunk.transform.position = transform.position;     
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -84,14 +95,12 @@ public class Enemy : MonoBehaviour
         {
             if (collision.gameObject.layer == 12 && collision.gameObject.GetComponent<ChunksController>().ThisWasPicked == true) //Si es el chunk, lanzalo
             {
-                GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
-                Chunk.transform.position = transform.position;
+                InstantiateOneTime();
             }
 
             if (collision.gameObject.layer == 9 && collision.gameObject.GetComponent<Asteroids>().ThisWasPicked == true)  //Si es el asteroide, lanzalo
             {
-                GameObject Chunk = Instantiate<GameObject>(Chunk_Prefab);
-                Chunk.transform.position = transform.position;
+                InstantiateOneTime();
             }
 
             if(onetimeDeadAnim == false)

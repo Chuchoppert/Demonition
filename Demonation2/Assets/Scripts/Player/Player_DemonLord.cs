@@ -54,7 +54,7 @@ public class Player_DemonLord : MonoBehaviour
     private float RealSpeedPowerUp = 1;
     private float WhatPowerReset = 0;
 
-    public static float slowMotionFactor = 1; //UTILIZA ESTA LINEA PARA MODIFICAR A TODOS LOS SCRIPT (SOLO BULLET, SWARM Y ASTEROID) REVISA LOS COMENTARIOS Y TE DEJE ABAJO LA BASE (LINEA 244 y 261)
+    public static float slowMotionFactor = 1;
     public static bool SlowMotionActivate = false; 
 
     // Start is called before the first frame update
@@ -93,7 +93,7 @@ public class Player_DemonLord : MonoBehaviour
 
     void GrabChunk()
     {
-        if(AmmoPickedUp != null) //Setea la pos del objeto agarrado con la pos del Player
+        if (AmmoPickedUp != null && isLaunched == false) //Setea la pos del objeto agarrado con la pos del Player
         {
             //Animacion de agarrar chunk y mantener una vez
             if(isPickedUp == true)
@@ -102,7 +102,6 @@ public class Player_DemonLord : MonoBehaviour
                 isPickedUp = false;
             }
 
-            gameObject.GetComponent<BoxCollider>().isTrigger = true;
             if (AmmoPickedUp.gameObject.layer == 12) 
             {             
                 AmmoPickedUp.GetComponent<ChunksController>().isReadyToLaunch();
@@ -112,7 +111,6 @@ public class Player_DemonLord : MonoBehaviour
             {
                 AmmoPickedUp.GetComponent<Asteroids>().isReadyToLaunch();
             }
-
             AmmoPickedUp.gameObject.transform.position = transform.position + OffsetChunkPickedToPlayer;       
 
         }
@@ -150,7 +148,6 @@ public class Player_DemonLord : MonoBehaviour
 
     void ResetBools()
     {
-            gameObject.GetComponent<BoxCollider>().isTrigger = false;
             isPickedUp = false;
             isLaunched = false;
 
@@ -195,10 +192,8 @@ public class Player_DemonLord : MonoBehaviour
     {
         if (DashCooldown <= 0)
         {
-
             if (Input.GetKey(KeyCode.LeftShift))
             {
-
                 SoundFromDemonLords.clip = SoundsDemonLords[2];
                 SoundFromDemonLords.PlayOneShot(SoundFromDemonLords.clip);
 
@@ -216,15 +211,15 @@ public class Player_DemonLord : MonoBehaviour
             MeshColl_DL.enabled = true;
         }
     }
-    void Nuke()
+    public void Nuke()
     {
         GameObject.FindGameObjectWithTag("SpawnerEnemy").GetComponent<EnemySpawner>().EliminateAllEnemy();
     }
-    void GetExtraLife()
+    public void GetExtraLife()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<HealthDemonLords>().Healt += 1;
     }
-    void SlowMotionPW()
+    public void SlowMotionPW()
     {
         slowMotionFactor = RealFactorSlowMo;
         SlowMotionActivate = true;
@@ -232,7 +227,7 @@ public class Player_DemonLord : MonoBehaviour
         WhatPowerReset = 2;
         Invoke("ResetPowerUp", slowMoDuration);
     }
-    void Speed_PowerUp()
+    public void Speed_PowerUp()
     {
         RealSpeedPowerUp = SpeedPowerUp;        
 
@@ -240,7 +235,7 @@ public class Player_DemonLord : MonoBehaviour
         Invoke("ResetPowerUp", Time_SpeedPW);
     }
 
-    void ResetPowerUp()
+    public void ResetPowerUp()
     { 
         if(WhatPowerReset == 1)
         {
@@ -255,61 +250,16 @@ public class Player_DemonLord : MonoBehaviour
         }
     }
 
-
-    private void OnCollisionStay(Collision collision)
-    {      
-        if(collision.gameObject.layer == 12 || collision.gameObject.layer == 9) //Chunks o Asteroids
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == 12 || other.gameObject.layer == 9) //Chunks o Asteroids
         {
             //Agrega el chunk o asteroide a un gameobject especifico
             if (Input.GetKeyUp(KeyCode.Space) && AmmoPickedUp == null)
             {
                 isPickedUp = true;
-                AmmoPickedUp = collision.gameObject;               
+                AmmoPickedUp = other.gameObject;
             }
-        }
-        if (collision.gameObject.tag == "Nuke_PW")
-        {            
-            Destroy(collision.gameObject);
-            Nuke();
-        }
-        if (collision.gameObject.tag == "Vida_PW")
-        {
-            Destroy(collision.gameObject);
-            GetExtraLife();
-        }
-        if (collision.gameObject.tag == "Speed_PW")
-        {
-            Destroy(collision.gameObject);
-            Speed_PowerUp();
-        }
-        if (collision.gameObject.tag == "SlowMotion_PW")
-        {
-            Destroy(collision.gameObject);
-            SlowMotionPW();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Nuke_PW")
-        {
-            Destroy(other.gameObject);
-            Nuke();
-        }
-        if (other.gameObject.tag == "Vida_PW")
-        {
-            Destroy(other.gameObject);
-            GetExtraLife();
-        }
-        if (other.gameObject.tag == "Speed_PW")
-        {
-            Destroy(other.gameObject);
-            Speed_PowerUp();
-        }
-        if (other.gameObject.tag == "SlowMotion_PW")
-        {
-            Destroy(other.gameObject);
-            SlowMotionPW();
         }
     }
 }

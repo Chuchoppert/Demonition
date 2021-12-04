@@ -628,8 +628,8 @@ GameObject:
   - component: {fileID: 103516524}
   - component: {fileID: 103516523}
   - component: {fileID: 103516522}
-  m_Layer: 0
-  m_Name: Cylinder
+  m_Layer: 16
+  m_Name: SlowMotion_PW
   m_TagString: SlowMotion_PW
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1397,7 +1397,7 @@ GameObject:
   - component: {fileID: 183492034}
   - component: {fileID: 183492033}
   - component: {fileID: 183492032}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Nuke_PW
   m_TagString: Nuke_PW
   m_Icon: {fileID: 0}
@@ -1474,7 +1474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183492031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.250002, y: 12.81, z: 27.68}
+  m_LocalPosition: {x: 6, y: 12.81, z: 27.68}
   m_LocalScale: {x: 4.8498, y: 4.8498, z: 4.8498}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1896,7 +1896,7 @@ GameObject:
   - component: {fileID: 300739243}
   - component: {fileID: 300739242}
   - component: {fileID: 300739241}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Speed_PW
   m_TagString: Speed_PW
   m_Icon: {fileID: 0}
@@ -1973,7 +1973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300739240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.45, y: 17.26, z: 27.68}
+  m_LocalPosition: {x: -11.6, y: 9.5, z: 27.68}
   m_LocalScale: {x: 5.182, y: 5.182, z: 5.182}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2260,7 +2260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2725564106104442400, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.93
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 2725564106104442400, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2313,6 +2313,14 @@ PrefabInstance:
     - target: {fileID: 5034424270148968758, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
       propertyPath: ForceLaunch
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666261542448070994, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587702150080064310, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ce701553c8777c43906733a4edd58ab, type: 3}
@@ -2890,7 +2898,7 @@ GameObject:
   - component: {fileID: 777165947}
   - component: {fileID: 777165946}
   - component: {fileID: 777165945}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Prop1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3388,7 +3396,7 @@ GameObject:
   - component: {fileID: 1114778979}
   m_Layer: 13
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Grab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3417,11 +3425,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114778973}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.249364, y: 4.9748783, z: 7.9388103}
-  m_Center: {x: 1.44661, y: 0, z: 0.119999886}
+  m_Size: {x: 3.2835093, y: 4.9748783, z: 7.9388103}
+  m_Center: {x: 3.9295373, y: 0, z: 0.119999886}
 --- !u!54 &1114778976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5975,7 +5983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1699525821}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Skins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6146,7 +6154,7 @@ GameObject:
   - component: {fileID: 1793489041}
   - component: {fileID: 1793489040}
   - component: {fileID: 1793489039}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Vida_PW
   m_TagString: Vida_PW
   m_Icon: {fileID: 0}
@@ -6224,7 +6232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793489038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.26, y: -15.14, z: 27.68}
+  m_LocalPosition: {x: 3.9899998, y: -15.14, z: 27.68}
   m_LocalScale: {x: 3.8061, y: 3.8061, z: 3.8061}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6247,7 +6255,7 @@ GameObject:
   - component: {fileID: 1894916703}
   - component: {fileID: 1894916702}
   - component: {fileID: 1894916701}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Prop3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6470,7 +6478,7 @@ GameObject:
   - component: {fileID: 1993560864}
   - component: {fileID: 1993560863}
   - component: {fileID: 1993560862}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Prop4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6700,7 +6708,7 @@ GameObject:
   - component: {fileID: 2109679497}
   - component: {fileID: 2109679496}
   - component: {fileID: 2109679495}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Prop2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

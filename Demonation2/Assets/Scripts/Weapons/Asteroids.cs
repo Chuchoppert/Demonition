@@ -12,6 +12,7 @@ public class Asteroids : MonoBehaviour
 
     GameObject MenuManager;
 
+
     void Start()
     {
         MenuManager = GameObject.FindWithTag("MenuManag");
@@ -22,8 +23,8 @@ public class Asteroids : MonoBehaviour
     {
         if (ThisWasPicked == false)
         {
-            //this.transform.Translate(new Vector3(0.5f, 1, 0) * -MovingSpeedAsteroid * 5 * Time.deltaTime, Space.Self); 
-            this.transform.Translate((new Vector3(0.5f, 1, 0) * -MovingSpeedAsteroid * 5 * Time.deltaTime) * Player_DemonLord.slowMotionFactor, Space.Self);  //Modifica esta linea para que sea mas lento.
+
+            this.transform.Translate((new Vector3(0.5f, 1, 0) * -MovingSpeedAsteroid * 5 * Time.deltaTime) * Player_DemonLord.slowMotionFactor, Space.Self); 
             if (transform.position.x < -20f)
             {
                 Destroy(this.gameObject);
@@ -33,6 +34,7 @@ public class Asteroids : MonoBehaviour
         if (ThisWasLaunched == true && ThisWasPicked == true)
         {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            this.gameObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
             this.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(ForceLaunch, 0, 0), ForceMode.Impulse);
             if (transform.position.x > 50f)
@@ -62,7 +64,7 @@ public class Asteroids : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if ((collision.gameObject.layer == 10 || collision.gameObject.layer == 11) && this.ThisWasPicked == false) //si el asteroide no fue lanzado y toco enemy, no sumar puntos
+        if ((collision.gameObject.layer == 10 || collision.gameObject.layer == 11) && this.ThisWasPicked == true) //si el asteroide no fue lanzado y toco enemy, no sumar puntos
         {
             Destroy(this.gameObject);
             Destroy(collision.gameObject, 0.05f);

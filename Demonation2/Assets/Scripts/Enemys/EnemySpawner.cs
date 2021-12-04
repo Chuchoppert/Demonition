@@ -44,7 +44,6 @@ public class EnemySpawner : MonoBehaviour
 	void PreSpawn()
     {
 		Invoke("SpawnEnemies", Random.Range(EnemiesForSeconds[0], EnemiesForSeconds[1])); 
-
 	}
 	void SpawnEnemies()
 	{

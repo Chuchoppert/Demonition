@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7142400049607230038}
   - component: {fileID: 6702432376961270863}
   - component: {fileID: 4198990216529301475}
+  - component: {fileID: 3206008265760779887}
   m_Layer: 9
   m_Name: Asteroide02
   m_TagString: ObjectDestroy
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97440925564899179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.043376, y: 0.070561, z: -0.18348}
+  m_LocalScale: {x: 0.6929389, y: 0.6929389, z: 0.6929389}
   m_Children:
   - {fileID: 4119431853320424361}
   m_Father: {fileID: 0}
@@ -75,10 +76,24 @@ BoxCollider:
   m_GameObject: {fileID: 97440925564899179}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.2328105, y: 4.0879292, z: 5.045979}
   m_Center: {x: -0.10293102, y: 0.1504376, z: -0.42360044}
+--- !u!64 &3206008265760779887
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97440925564899179}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3607068723941907406, guid: 1e78417d721eb744ca774ed373392d33, type: 3}
 --- !u!1001 &4513046685419220034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,15 +107,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e78417d721eb744ca774ed373392d33, type: 3}
       propertyPath: m_LocalScale.x
-      value: 70
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e78417d721eb744ca774ed373392d33, type: 3}
       propertyPath: m_LocalScale.y
-      value: 70
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e78417d721eb744ca774ed373392d33, type: 3}
       propertyPath: m_LocalScale.z
-      value: 70
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e78417d721eb744ca774ed373392d33, type: 3}
       propertyPath: m_LocalPosition.x

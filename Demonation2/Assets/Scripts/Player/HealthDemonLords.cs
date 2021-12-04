@@ -18,14 +18,11 @@ public class HealthDemonLords : MonoBehaviour
     [Range(0f, 1f)]
     public float LerpTime;
 
-    //[Header("Set Power for Power Ups")]
-    //public GameObject PlayerEmpty;
-
     private void Update()
     {
         DemonLordWasHurt();
     }
-    void DemonLordWasHurt() //Cambia "material" al demonio y si llega a 0, se desactiva  (PASAR A SCRIPT DE DEMONLORD)
+    void DemonLordWasHurt()
     {
         if (Healt > 1)
         {
@@ -37,8 +34,9 @@ public class HealthDemonLords : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+        //Collision with danger objects
         if (other.gameObject.layer == 14)//Daño por bala
         {
             Healt -= DamageForBullets;
@@ -55,6 +53,28 @@ public class HealthDemonLords : MonoBehaviour
         else if (other.gameObject.layer == 15) //Daño por tocar nave
         {
             Healt -= DamageForBigEnemy;
+        }
+
+        //Collision with PowerUps
+        if (other.gameObject.tag == "Nuke_PW")
+        {           
+            Destroy(other.gameObject);
+            GameObject.FindGameObjectWithTag("Grab").GetComponent<Player_DemonLord>().Nuke();
+        }
+        if (other.gameObject.tag == "Vida_PW")
+        {
+            Destroy(other.gameObject);
+            GameObject.FindGameObjectWithTag("Grab").GetComponent<Player_DemonLord>().GetExtraLife();
+        }
+        if (other.gameObject.tag == "Speed_PW")
+        {
+            Destroy(other.gameObject);
+            GameObject.FindGameObjectWithTag("Grab").GetComponent<Player_DemonLord>().Speed_PowerUp();
+        }
+        if (other.gameObject.tag == "SlowMotion_PW")
+        {
+            Destroy(other.gameObject);
+            GameObject.FindGameObjectWithTag("Grab").GetComponent<Player_DemonLord>().SlowMotionPW();
         }
     }
 }

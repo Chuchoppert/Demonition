@@ -23,8 +23,8 @@ TagManager:
   - VIDEO
   - Water
   - UI
-  - LaunchedbyPlayer
-  - isAsteroid
+  - 
+  - 
   - Player
   - Asteroid
   - Enemy_Small
@@ -33,7 +33,7 @@ TagManager:
   - Grab
   - Bullet_Enemy
   - Enemy_Naves
-  - 
+  - PowerUps
   - 
   - 
   - 

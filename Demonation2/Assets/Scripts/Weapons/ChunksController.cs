@@ -37,7 +37,9 @@ public class ChunksController : MonoBehaviour
         if (ThisWasLaunched == true && ThisWasPicked == true)
         {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            
+            this.gameObject.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
+
             this.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(ForceLaunch, 0, 0), ForceMode.Impulse);
             if (transform.position.x > 50f)
             {
