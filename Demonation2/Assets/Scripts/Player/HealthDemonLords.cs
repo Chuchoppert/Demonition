@@ -11,7 +11,9 @@ public class HealthDemonLords : MonoBehaviour
     public float DamageForSmallEnemy = 0.5f;
     public float DamageForBigEnemy = 1f;
     public float DamageForNave = 1f;
-
+    public RawImage[] VidasImages;
+    public GameObject HeartBeat;
+ 
     [Header("Set changing color Lerp")]
     public RawImage RawImage_Camera;
     public Color[] ColorChanging;
@@ -21,6 +23,7 @@ public class HealthDemonLords : MonoBehaviour
     private void Update()
     {
         DemonLordWasHurt();
+        CheckNoLives();
     }
     void DemonLordWasHurt()
     {
@@ -31,6 +34,42 @@ public class HealthDemonLords : MonoBehaviour
         else if (Healt <= 1)
         {
             RawImage_Camera.color = Color.Lerp(ColorChanging[0], ColorChanging[1], Mathf.PingPong(Time.time * LerpTime, 1));
+        }
+    }
+
+    void CheckNoLives()
+    {
+        if(Healt >= 3)
+        {
+            Healt = 3;
+        }
+        if(Healt == 0)
+        {
+            HeartBeat.SetActive(false);
+            VidasImages[0].gameObject.SetActive(false);
+            VidasImages[1].gameObject.SetActive(false);
+            VidasImages[2].gameObject.SetActive(false);
+        }
+        if(Healt == 1)
+        {
+            HeartBeat.SetActive(true);
+            VidasImages[0].gameObject.SetActive(true);
+            VidasImages[1].gameObject.SetActive(false);
+            VidasImages[2].gameObject.SetActive(false);
+        }
+        if(Healt == 2)
+        {
+            HeartBeat.SetActive(false);
+            VidasImages[0].gameObject.SetActive(true);
+            VidasImages[1].gameObject.SetActive(true);
+            VidasImages[2].gameObject.SetActive(false);
+        }
+        if (Healt == 3)
+        {
+            HeartBeat.SetActive(false);
+            VidasImages[0].gameObject.SetActive(true);
+            VidasImages[1].gameObject.SetActive(true);
+            VidasImages[2].gameObject.SetActive(true);
         }
     }
 

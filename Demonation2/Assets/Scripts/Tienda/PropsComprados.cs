@@ -32,7 +32,7 @@ public class PropsComprados : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.X) && Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.X) && Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.V))
         {
             MoneyPlayer = 100000f;
             PlayerPrefs.SetFloat("Money", MoneyPlayer);
