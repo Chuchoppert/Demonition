@@ -19,7 +19,7 @@ public class Asteroids : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (ThisWasPicked == false)
         {
@@ -61,13 +61,13 @@ public class Asteroids : MonoBehaviour
         {
             MenuManager.GetComponent<HUDManager>().ScoreInGame += 1;
             Destroy(this.gameObject);
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject);          
         }
 
         if ((collision.gameObject.layer == 10 || collision.gameObject.layer == 11) && this.ThisWasPicked == true) //si el asteroide no fue lanzado y toco enemy, no sumar puntos
         {
             Destroy(this.gameObject);
-            Destroy(collision.gameObject, 0.05f);
+            Destroy(collision.gameObject);                    
         }       
     }
 }

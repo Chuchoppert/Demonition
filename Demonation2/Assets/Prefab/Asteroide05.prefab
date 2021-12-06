@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisWasPicked: 0
   ThisWasLaunched: 0
-  ForceLaunch: 8
+  ForceLaunch: 5
   MovingSpeedAsteroid: 4
 --- !u!64 &5815358527059633702
 MeshCollider:

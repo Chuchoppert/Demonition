@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisWasPicked: 0
   ThisWasLaunched: 0
-  ForceLaunch: 8
+  ForceLaunch: 5
   MovingSpeedChunk: 5
 --- !u!64 &5666261542448070994
 MeshCollider:
