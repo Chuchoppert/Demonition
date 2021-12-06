@@ -11,7 +11,8 @@ public class HealthDemonLords : MonoBehaviour
     public float DamageForSmallEnemy = 0.5f;
     public float DamageForBigEnemy = 1f;
     public float DamageForNave = 1f;
-    public RawImage[] VidasImages;
+    public Slider VidasImages;
+    public Image Fill;
     public GameObject HeartBeat;
  
     [Header("Set changing color Lerp")]
@@ -39,37 +40,30 @@ public class HealthDemonLords : MonoBehaviour
 
     void CheckNoLives()
     {
-        if(Healt >= 3)
+        VidasImages.value = Healt;
+        if (Healt >= 3)
         {
             Healt = 3;
         }
-        if(Healt == 0)
+        if(VidasImages.value == 0)
         {
             HeartBeat.SetActive(false);
-            VidasImages[0].gameObject.SetActive(false);
-            VidasImages[1].gameObject.SetActive(false);
-            VidasImages[2].gameObject.SetActive(false);
+            Fill.color = new Color(0, 0, 0, 1);
         }
-        if(Healt == 1)
+        if(VidasImages.value == 1)
         {
             HeartBeat.SetActive(true);
-            VidasImages[0].gameObject.SetActive(true);
-            VidasImages[1].gameObject.SetActive(false);
-            VidasImages[2].gameObject.SetActive(false);
+            Fill.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
-        if(Healt == 2)
+        if(VidasImages.value == 2)
         {
             HeartBeat.SetActive(false);
-            VidasImages[0].gameObject.SetActive(true);
-            VidasImages[1].gameObject.SetActive(true);
-            VidasImages[2].gameObject.SetActive(false);
+            Fill.color = new Color (0.5f, 0.5f, 0.5f, 1);
         }
-        if (Healt == 3)
+        if (VidasImages.value == 3)
         {
             HeartBeat.SetActive(false);
-            VidasImages[0].gameObject.SetActive(true);
-            VidasImages[1].gameObject.SetActive(true);
-            VidasImages[2].gameObject.SetActive(true);
+            Fill.color = new Color(1, 1, 1, 1);
         }
     }
 

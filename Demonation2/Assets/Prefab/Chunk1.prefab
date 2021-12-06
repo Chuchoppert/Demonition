@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2725564106104442400}
   - component: {fileID: 6587702150080064310}
   - component: {fileID: 5034424270148968758}
-  - component: {fileID: 6068521648960318414}
   - component: {fileID: 5666261542448070994}
   m_Layer: 12
   m_Name: Chunk1
@@ -48,7 +47,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
 --- !u!114 &5034424270148968758
@@ -67,19 +66,6 @@ MonoBehaviour:
   ThisWasLaunched: 0
   ForceLaunch: 8
   MovingSpeedChunk: 5
---- !u!65 &6068521648960318414
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3357704765467874458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 3.5484066, y: 4.868759, z: 5.2384834}
-  m_Center: {x: 0.17949152, y: 0.042680264, z: -0.25481176}
 --- !u!64 &5666261542448070994
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class ChunksController : MonoBehaviour
     public float MovingSpeedChunk = 5f;
 
     GameObject MenuManager;
+    private bool OneTime = false;
 
     void Start()
     {
@@ -62,8 +63,9 @@ public class ChunksController : MonoBehaviour
     {
         //Destroy enemy and add 1 point to score
         //Enemi_Small                 O             Enemy_Big
-        if ((collision.gameObject.layer == 10 || collision.gameObject.layer == 11) && this.ThisWasPicked == true)
+        if (((collision.gameObject.layer == 10 || collision.gameObject.layer == 11) && this.ThisWasPicked == true) && this.OneTime == false)
         {
+            this.OneTime = true;
             MenuManager.GetComponent<HUDManager>().ScoreInGame += 1;
             Destroy(this.gameObject);
             Destroy(collision.gameObject, 0.05f);
