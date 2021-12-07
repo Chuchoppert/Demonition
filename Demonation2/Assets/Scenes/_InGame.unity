@@ -1102,7 +1102,7 @@ MonoBehaviour:
   - {fileID: 716053731}
   - {fileID: 1994005586}
   - {fileID: 1076949973}
-  SpawnTimer: 15
+  SpawnTimer: 30
 --- !u!1 &157002851
 GameObject:
   m_ObjectHideFlags: 0
