@@ -206,7 +206,7 @@ public class Player_DemonLord : MonoBehaviour
                 DashCooldown = 5f;
             }
         }
-        if (DashCooldown < 4.5f)
+        if (DashCooldown < 4f)
         {
             MeshColl_DL.enabled = true;
         }

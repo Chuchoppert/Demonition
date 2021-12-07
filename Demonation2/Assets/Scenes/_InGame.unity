@@ -1102,7 +1102,7 @@ MonoBehaviour:
   - {fileID: 716053731}
   - {fileID: 1994005586}
   - {fileID: 1076949973}
-  SpawnTimer: 30
+  SpawnTimer: 15
 --- !u!1 &157002851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,7 +2970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c3c26f6872585614c8b87eea719f04d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8957119
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c3c26f6872585614c8b87eea719f04d9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3535,7 +3535,7 @@ MonoBehaviour:
   LimitsY:
   - -17
   - 17
-  Health_DL: 2
+  Health_DL: 500
   DemonLord: {fileID: 1674680338}
   SoundsDemonLords:
   - {fileID: 8300000, guid: 5bc4197aabf039845b68b4d30770bab4, type: 3}
