@@ -28,7 +28,7 @@ public class MenuManeger : MonoBehaviour
     {
         if(TextMoney != null)
         {
-            TextMoney.text = "Money: " + PlayerPrefs.GetFloat("Money").ToString("F2");
+            TextMoney.text = "Souls: " + PlayerPrefs.GetFloat("Money").ToString("F2");
         }
 
         if (ActivateReset == true)

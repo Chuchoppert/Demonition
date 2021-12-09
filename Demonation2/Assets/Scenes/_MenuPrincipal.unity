@@ -295,7 +295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Money: '
+  m_text: 'Souls: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd6c2580b6959b04fac5e4fb00a59a2f, type: 2}
   m_sharedMaterial: {fileID: -1266713442689150677, guid: bd6c2580b6959b04fac5e4fb00a59a2f, type: 2}
@@ -388,8 +388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -155, y: 203}
-  m_SizeDelta: {x: 576.498, y: 189.108}
+  m_AnchoredPosition: {x: -257.3, y: 203}
+  m_SizeDelta: {x: 660.1, y: 189.108}
   m_Pivot: {x: -0.7684658, y: -0.49226958}
 --- !u!1 &96177208
 GameObject:
@@ -1026,21 +1026,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'A cult of edgy humans, intending to save the world from a bio-catastrophe,
-    accidentally invoke a planet exterminator Demon Lord that loves and needs to
-    DEMONISH anything, anytime (there is
+    accidentally invoke
 
-    no bio-catastrophe if there is no bio
-    at all!).
+    a planet exterminator Demon Lord that loves and needs
+    to DEMONISH anything, anytime (there is
 
-
-    All he wants is to destroy anyone and anything that might be
-    an obstacle in its blood-bio-thirst parade.
+    no bio-catastrophe if there is no
+    bio at all!).
 
 
+    All he wants is to destroy anyone and anything that might
+    be an obstacle in its blood-bio-thirst parade.
 
 
-    Credits:   Li | Flai | Gh0st
-    | Chuchopper'
+
+
+    Credits:   Li | Flai |
+    Gh0st | Chuchopper'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd6c2580b6959b04fac5e4fb00a59a2f, type: 2}
   m_sharedMaterial: {fileID: -1266713442689150677, guid: bd6c2580b6959b04fac5e4fb00a59a2f, type: 2}
@@ -3818,10 +3820,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Use WASD or Arrow Keys to move
 
-    Use Spacebar to grab or throw an asteroid
-    or chunk
+    Press Spacebar to grab an asteroid
+    or chunk,
 
-    Use Left Shift to Dash'
+    press Spacebar again to throw it
+
+    Press Left Shift to Dash'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd6c2580b6959b04fac5e4fb00a59a2f, type: 2}
   m_sharedMaterial: {fileID: -1266713442689150677, guid: bd6c2580b6959b04fac5e4fb00a59a2f, type: 2}
@@ -4312,7 +4316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -32.6}
+  m_AnchoredPosition: {x: 0, y: 49}
   m_SizeDelta: {x: 530.9, y: 82.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997978192
@@ -4619,7 +4623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -113.7}
+  m_AnchoredPosition: {x: 0, y: -111.9}
   m_SizeDelta: {x: 271.8, y: 89.62201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058585940
@@ -6958,7 +6962,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 48.5}
+  m_AnchoredPosition: {x: 0, y: -32}
   m_SizeDelta: {x: 659.7, y: 82.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1693490799
@@ -9203,8 +9207,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 82.89
-  m_fontSizeBase: 82.89
+  m_fontSize: 71.3
+  m_fontSizeBase: 71.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
